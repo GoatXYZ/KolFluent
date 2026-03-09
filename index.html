@@ -1,0 +1,1281 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KolFluent — Design System Showcase</title>
+  <style>
+    /* ═══════════════════════════════════════════════
+       FLUENT 2 DESIGN TOKENS — Light Theme
+       ═══════════════════════════════════════════════ */
+    :root {
+      --colorBrandBackground: #0f6cbd;
+      --colorBrandBackgroundHover: #115ea3;
+      --colorBrandBackgroundPressed: #0c3b5e;
+      --colorBrandBackgroundSelected: #115ea3;
+      --colorBrandBackground2: #ebf3fc;
+      --colorBrandBackground2Hover: #b4d6fa;
+      --colorBrandForeground1: #0f6cbd;
+      --colorBrandForeground2: #115ea3;
+      --colorBrandForegroundLink: #115ea3;
+      --colorBrandForegroundLinkHover: #0f548c;
+      --colorBrandStroke1: #0f6cbd;
+
+      --colorNeutralBackground1: #ffffff;
+      --colorNeutralBackground1Hover: #f5f5f5;
+      --colorNeutralBackground1Pressed: #e0e0e0;
+      --colorNeutralBackground2: #fafafa;
+      --colorNeutralBackground3: #f5f5f5;
+      --colorNeutralBackground4: #f0f0f0;
+      --colorNeutralBackground5: #ebebeb;
+      --colorNeutralBackground6: #e0e0e0;
+
+      --colorNeutralForeground1: #242424;
+      --colorNeutralForeground2: #424242;
+      --colorNeutralForeground3: #616161;
+      --colorNeutralForeground4: #707070;
+      --colorNeutralForegroundDisabled: #bdbdbd;
+      --colorNeutralForegroundOnBrand: #ffffff;
+
+      --colorNeutralStroke1: #d1d1d1;
+      --colorNeutralStroke2: #e0e0e0;
+      --colorNeutralStroke3: #f0f0f0;
+      --colorNeutralStrokeAccessible: #616161;
+
+      --colorSubtleBackground: transparent;
+      --colorSubtleBackgroundHover: #f5f5f5;
+      --colorSubtleBackgroundPressed: #e0e0e0;
+
+      --colorCompoundBrandBackground: #0f6cbd;
+      --colorCompoundBrandBackgroundHover: #115ea3;
+      --colorCompoundBrandStroke: #0f6cbd;
+
+      --colorStatusSuccessBackground1: #f1faf1;
+      --colorStatusSuccessForeground1: #0e700e;
+      --colorStatusWarningBackground1: #fff9f5;
+      --colorStatusWarningForeground1: #bc4b09;
+      --colorStatusDangerBackground1: #fdf3f4;
+      --colorStatusDangerForeground1: #b10e1c;
+
+      --fontFamilyBase: 'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      --fontFamilyMonospace: Consolas, 'Courier New', Courier, monospace;
+
+      --fontSizeBase100: 10px;
+      --fontSizeBase200: 12px;
+      --fontSizeBase300: 14px;
+      --fontSizeBase400: 16px;
+      --fontSizeBase500: 20px;
+      --fontSizeBase600: 24px;
+      --fontSizeHero700: 28px;
+      --fontSizeHero800: 32px;
+      --fontSizeHero900: 40px;
+      --fontSizeHero1000: 68px;
+
+      --fontWeightRegular: 400;
+      --fontWeightMedium: 500;
+      --fontWeightSemibold: 600;
+      --fontWeightBold: 700;
+
+      --lineHeightBase100: 14px;
+      --lineHeightBase200: 16px;
+      --lineHeightBase300: 20px;
+      --lineHeightBase400: 22px;
+      --lineHeightBase500: 26px;
+      --lineHeightBase600: 32px;
+      --lineHeightHero700: 36px;
+      --lineHeightHero800: 40px;
+      --lineHeightHero900: 52px;
+      --lineHeightHero1000: 92px;
+
+      --borderRadiusNone: 0;
+      --borderRadiusSmall: 2px;
+      --borderRadiusMedium: 4px;
+      --borderRadiusLarge: 6px;
+      --borderRadiusXLarge: 8px;
+      --borderRadiusCircular: 10000px;
+
+      --spacingXXS: 2px;
+      --spacingXS: 4px;
+      --spacingSNudge: 6px;
+      --spacingS: 8px;
+      --spacingMNudge: 10px;
+      --spacingM: 12px;
+      --spacingL: 16px;
+      --spacingXL: 20px;
+      --spacingXXL: 24px;
+      --spacingXXXL: 32px;
+
+      --strokeWidthThin: 1px;
+      --strokeWidthThick: 2px;
+
+      --shadow2: 0px 1px 2px rgba(0,0,0,0.14), 0px 0px 2px rgba(0,0,0,0.12);
+      --shadow4: 0px 2px 4px rgba(0,0,0,0.14), 0px 0px 2px rgba(0,0,0,0.12);
+      --shadow8: 0px 4px 8px rgba(0,0,0,0.14), 0px 0px 2px rgba(0,0,0,0.12);
+      --shadow16: 0px 8px 16px rgba(0,0,0,0.14), 0px 0px 2px rgba(0,0,0,0.12);
+      --shadow28: 0px 14px 28px rgba(0,0,0,0.14), 0px 0px 8px rgba(0,0,0,0.12);
+      --shadow64: 0px 32px 64px rgba(0,0,0,0.14), 0px 0px 8px rgba(0,0,0,0.12);
+
+      --durationUltraFast: 50ms;
+      --durationFaster: 100ms;
+      --durationFast: 150ms;
+      --durationNormal: 200ms;
+      --durationGentle: 250ms;
+      --durationSlow: 300ms;
+      --durationSlower: 400ms;
+      --durationUltraSlow: 500ms;
+
+      --curveDecelerateMax: cubic-bezier(0.1, 0.9, 0.2, 1);
+      --curveDecelerateMid: cubic-bezier(0, 0, 0, 1);
+      --curveDecelerateMin: cubic-bezier(0.33, 0, 0.1, 1);
+      --curveAccelerateMax: cubic-bezier(1, 0, 1, 1);
+      --curveAccelerateMid: cubic-bezier(0.7, 0, 1, 0.5);
+      --curveAccelerateMin: cubic-bezier(0.8, 0, 0.78, 1);
+      --curveEasyEase: cubic-bezier(0.33, 0, 0.67, 1);
+      --curveEasyEaseMax: cubic-bezier(0.8, 0, 0.2, 1);
+    }
+
+    /* ═══ Dark Theme ═══ */
+    [data-theme="dark"] {
+      --colorBrandBackground: #115ea3;
+      --colorBrandBackgroundHover: #0f6cbd;
+      --colorBrandBackgroundPressed: #0f548c;
+      --colorBrandBackground2: #0a2e4a;
+      --colorBrandForeground1: #479ef5;
+      --colorBrandForeground2: #62abf5;
+      --colorBrandForegroundLink: #479ef5;
+      --colorBrandForegroundLinkHover: #77bcf8;
+      --colorBrandStroke1: #479ef5;
+
+      --colorNeutralBackground1: #292929;
+      --colorNeutralBackground1Hover: #3d3d3d;
+      --colorNeutralBackground2: #1f1f1f;
+      --colorNeutralBackground3: #141414;
+      --colorNeutralBackground4: #0f0f0f;
+      --colorNeutralBackground5: #0a0a0a;
+      --colorNeutralBackground6: #333333;
+
+      --colorNeutralForeground1: #ffffff;
+      --colorNeutralForeground2: #d6d6d6;
+      --colorNeutralForeground3: #adadad;
+      --colorNeutralForeground4: #999999;
+      --colorNeutralForegroundDisabled: #5c5c5c;
+
+      --colorNeutralStroke1: #666666;
+      --colorNeutralStroke2: #525252;
+      --colorNeutralStroke3: #3d3d3d;
+      --colorNeutralStrokeAccessible: #adadad;
+
+      --colorSubtleBackgroundHover: #383838;
+      --colorSubtleBackgroundPressed: #2e2e2e;
+
+      --colorCompoundBrandBackground: #479ef5;
+      --colorCompoundBrandBackgroundHover: #62abf5;
+      --colorCompoundBrandStroke: #479ef5;
+
+      --shadow2: 0px 1px 2px rgba(0,0,0,0.48), 0px 0px 2px rgba(0,0,0,0.24);
+      --shadow4: 0px 2px 4px rgba(0,0,0,0.48), 0px 0px 2px rgba(0,0,0,0.24);
+      --shadow8: 0px 4px 8px rgba(0,0,0,0.48), 0px 0px 2px rgba(0,0,0,0.24);
+      --shadow16: 0px 8px 16px rgba(0,0,0,0.48), 0px 0px 2px rgba(0,0,0,0.24);
+      --shadow28: 0px 14px 28px rgba(0,0,0,0.48), 0px 0px 8px rgba(0,0,0,0.24);
+      --shadow64: 0px 32px 64px rgba(0,0,0,0.48), 0px 0px 8px rgba(0,0,0,0.24);
+    }
+
+    /* ═══ Reset & Base ═══ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--fontFamilyBase);
+      font-size: var(--fontSizeBase300);
+      line-height: var(--lineHeightBase300);
+      color: var(--colorNeutralForeground1);
+      background-color: var(--colorNeutralBackground2);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background-color var(--durationSlower) var(--curveEasyEase),
+                  color var(--durationSlower) var(--curveEasyEase);
+    }
+
+    a { color: var(--colorBrandForegroundLink); text-decoration: none; }
+    a:hover { color: var(--colorBrandForegroundLinkHover); text-decoration: underline; }
+    code {
+      font-family: var(--fontFamilyMonospace);
+      font-size: 0.9em;
+      background: var(--colorNeutralBackground3);
+      padding: 2px 6px;
+      border-radius: var(--borderRadiusSmall);
+      transition: background-color var(--durationSlower) var(--curveEasyEase);
+    }
+
+    /* ═══ Skip Link ═══ */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: var(--spacingXXL);
+      padding: 8px 16px;
+      background: var(--colorBrandBackground);
+      color: var(--colorNeutralForegroundOnBrand);
+      border-radius: var(--borderRadiusMedium);
+      font-weight: var(--fontWeightSemibold);
+      z-index: 9999;
+      transition: top var(--durationFast) var(--curveEasyEase);
+    }
+    .skip-link:focus { top: var(--spacingS); text-decoration: none; color: var(--colorNeutralForegroundOnBrand); }
+
+    /* ═══ Layout ═══ */
+    .container { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 var(--spacingXXL); }
+
+    /* ═══ Navbar ═══ */
+    .navbar {
+      position: sticky; top: 0; z-index: 1000;
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+      transition: background-color var(--durationSlower) var(--curveEasyEase),
+                  border-color var(--durationSlower) var(--curveEasyEase),
+                  box-shadow var(--durationNormal) var(--curveEasyEase);
+    }
+    [data-theme="dark"] .navbar { background: rgba(41,41,41,0.72); }
+    .navbar.scrolled { box-shadow: var(--shadow4); }
+
+    .navbar-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 48px; max-width: 1200px; margin: 0 auto; padding: 0 var(--spacingXXL);
+    }
+    .navbar-logo {
+      font-size: var(--fontSizeBase400); font-weight: var(--fontWeightSemibold);
+      color: var(--colorNeutralForeground1); text-decoration: none;
+      display: flex; align-items: center; gap: var(--spacingS);
+    }
+    .navbar-logo:hover { text-decoration: none; }
+    .navbar-logo svg { width: 20px; height: 20px; }
+    .navbar-links {
+      display: flex; align-items: center; gap: var(--spacingXS); list-style: none;
+      overflow-x: auto; -ms-overflow-style: none; scrollbar-width: none;
+    }
+    .navbar-links::-webkit-scrollbar { display: none; }
+    .navbar-links a {
+      display: flex; align-items: center;
+      padding: 6px 10px; font-size: var(--fontSizeBase200); font-weight: var(--fontWeightMedium);
+      color: var(--colorNeutralForeground3); border-radius: var(--borderRadiusMedium);
+      transition: background-color var(--durationFaster) var(--curveEasyEase),
+                  color var(--durationFaster) var(--curveEasyEase);
+      text-decoration: none; white-space: nowrap;
+    }
+    .navbar-links a:hover {
+      background-color: var(--colorSubtleBackgroundHover);
+      color: var(--colorNeutralForeground1); text-decoration: none;
+    }
+    .navbar-right { display: flex; align-items: center; gap: var(--spacingM); }
+    .theme-toggle {
+      width: 32px; height: 32px; border-radius: var(--borderRadiusMedium);
+      border: none; background: var(--colorSubtleBackground);
+      color: var(--colorNeutralForeground2); cursor: pointer;
+      display: flex; align-items: center; justify-content: center; font-size: 16px;
+      transition: background-color var(--durationFaster) var(--curveEasyEase);
+    }
+    .theme-toggle:hover { background: var(--colorSubtleBackgroundHover); }
+    .theme-toggle .icon-moon { display: none; }
+    [data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+    [data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+
+    /* ═══ Buttons ═══ */
+    .fluent-btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: var(--spacingS);
+      padding: 5px 12px; min-height: 32px;
+      font-family: var(--fontFamilyBase); font-size: var(--fontSizeBase300);
+      font-weight: var(--fontWeightSemibold); line-height: var(--lineHeightBase300);
+      border-radius: var(--borderRadiusMedium);
+      border: var(--strokeWidthThin) solid transparent; cursor: pointer;
+      transition: background-color var(--durationFast) var(--curveEasyEase),
+                  border-color var(--durationFast) var(--curveEasyEase),
+                  color var(--durationFast) var(--curveEasyEase);
+      text-decoration: none;
+    }
+    .fluent-btn:active { transform: scale(0.98); }
+    .fluent-btn:hover { text-decoration: none; }
+
+    .fluent-btn-primary {
+      background-color: var(--colorBrandBackground); color: var(--colorNeutralForegroundOnBrand);
+      border-color: var(--colorBrandBackground);
+    }
+    .fluent-btn-primary:hover {
+      background-color: var(--colorBrandBackgroundHover); border-color: var(--colorBrandBackgroundHover);
+      color: var(--colorNeutralForegroundOnBrand);
+    }
+
+    .fluent-btn-outline {
+      background-color: transparent; color: var(--colorNeutralForeground1);
+      border-color: var(--colorNeutralStroke1);
+    }
+    .fluent-btn-outline:hover { background-color: var(--colorSubtleBackgroundHover); color: var(--colorNeutralForeground1); }
+
+    .fluent-btn-subtle {
+      background-color: var(--colorSubtleBackground); color: var(--colorNeutralForeground2);
+      border-color: transparent;
+    }
+    .fluent-btn-subtle:hover { background-color: var(--colorSubtleBackgroundHover); color: var(--colorNeutralForeground1); }
+
+    .fluent-btn-sm { padding: 3px 8px; min-height: 24px; font-size: var(--fontSizeBase200); }
+    .fluent-btn-lg { padding: 8px 16px; min-height: 40px; }
+
+    /* ═══ Cards ═══ */
+    .fluent-card {
+      position: relative; background: var(--colorNeutralBackground1);
+      border: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+      border-radius: var(--borderRadiusXLarge); box-shadow: var(--shadow2);
+      padding: var(--spacingXXL); overflow: hidden;
+      transition: box-shadow var(--durationNormal) var(--curveEasyEase),
+                  border-color var(--durationNormal) var(--curveEasyEase),
+                  background-color var(--durationSlower) var(--curveEasyEase);
+    }
+    .fluent-card:hover { box-shadow: var(--shadow8); border-color: var(--colorNeutralStroke1); }
+
+    /* ═══ Badge ═══ */
+    .fluent-badge {
+      display: inline-flex; align-items: center; padding: 2px 8px;
+      border-radius: var(--borderRadiusCircular);
+      font-size: var(--fontSizeBase100); font-weight: var(--fontWeightSemibold);
+      letter-spacing: 0.02em; line-height: 1.6;
+    }
+    .fluent-badge-brand { background: var(--colorBrandBackground2); color: var(--colorBrandForeground1); }
+    .fluent-badge-success { background: var(--colorStatusSuccessBackground1); color: var(--colorStatusSuccessForeground1); }
+    .fluent-badge-warning { background: var(--colorStatusWarningBackground1); color: var(--colorStatusWarningForeground1); }
+    .fluent-badge-danger { background: var(--colorStatusDangerBackground1); color: var(--colorStatusDangerForeground1); }
+    .fluent-badge-muted { background: var(--colorNeutralBackground3); color: var(--colorNeutralForeground3); }
+
+    /* ═══ Sections ═══ */
+    .section {
+      padding: 80px 0;
+      transition: background-color var(--durationSlower) var(--curveEasyEase);
+    }
+    .section-alt { background: var(--colorNeutralBackground1); }
+    .section-overline {
+      font-size: var(--fontSizeBase200); font-weight: var(--fontWeightSemibold);
+      color: var(--colorBrandForeground1); text-transform: uppercase;
+      letter-spacing: 0.06em; margin-bottom: var(--spacingS);
+    }
+    .section-title {
+      font-size: clamp(var(--fontSizeBase600), 3vw, var(--fontSizeHero700));
+      font-weight: var(--fontWeightSemibold); line-height: var(--lineHeightHero700);
+      color: var(--colorNeutralForeground1); margin-bottom: var(--spacingS);
+    }
+    .section-description {
+      font-size: var(--fontSizeBase400); line-height: var(--lineHeightBase400);
+      color: var(--colorNeutralForeground3); margin-bottom: 48px; max-width: 560px;
+    }
+
+    /* ═══ Hero ═══ */
+    .hero {
+      padding: 100px 0 80px;
+      background: radial-gradient(ellipse at 65% 10%, rgba(15,108,189,0.07), transparent 50%),
+                  radial-gradient(ellipse at 25% 90%, rgba(15,108,189,0.04), transparent 45%),
+                  var(--colorNeutralBackground2);
+      transition: background-color var(--durationSlower) var(--curveEasyEase);
+    }
+    [data-theme="dark"] .hero {
+      background: radial-gradient(ellipse at 65% 10%, rgba(71,158,245,0.08), transparent 50%),
+                  radial-gradient(ellipse at 25% 90%, rgba(71,158,245,0.04), transparent 45%),
+                  var(--colorNeutralBackground2);
+    }
+    .hero-content { max-width: 640px; }
+    .hero h1 {
+      font-size: clamp(var(--fontSizeHero800), 5vw, var(--fontSizeHero900));
+      font-weight: var(--fontWeightSemibold); line-height: 1.15;
+      letter-spacing: -0.02em; margin-bottom: var(--spacingL);
+    }
+    .hero h1 .brand-text { color: var(--colorBrandForeground1); }
+    .hero-desc {
+      font-size: var(--fontSizeBase400); line-height: 1.6;
+      color: var(--colorNeutralForeground2); margin-bottom: var(--spacingXXXL); max-width: 520px;
+    }
+    .hero-actions { display: flex; gap: var(--spacingM); flex-wrap: wrap; }
+    .hero-meta {
+      margin-top: 48px; display: flex; gap: 40px; flex-wrap: wrap;
+    }
+    .hero-meta-item {
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .hero-meta-value {
+      font-size: var(--fontSizeBase600); font-weight: var(--fontWeightSemibold);
+      color: var(--colorBrandForeground1);
+    }
+    .hero-meta-label {
+      font-size: var(--fontSizeBase200); color: var(--colorNeutralForeground4);
+    }
+
+    /* ═══ Color Swatches ═══ */
+    .swatch-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: var(--spacingM); }
+    .swatch {
+      border-radius: var(--borderRadiusLarge); overflow: hidden;
+      border: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+      transition: border-color var(--durationSlower) var(--curveEasyEase);
+    }
+    .swatch-color { height: 64px; }
+    .swatch-info { padding: 10px 12px; background: var(--colorNeutralBackground1); transition: background-color var(--durationSlower) var(--curveEasyEase); }
+    .swatch-name { font-size: var(--fontSizeBase200); font-weight: var(--fontWeightMedium); color: var(--colorNeutralForeground2); margin-bottom: 2px; }
+    .swatch-value { font-size: var(--fontSizeBase100); font-family: var(--fontFamilyMonospace); color: var(--colorNeutralForeground4); }
+
+    .color-category { margin-bottom: 40px; }
+    .color-category-title {
+      font-size: var(--fontSizeBase300); font-weight: var(--fontWeightSemibold);
+      color: var(--colorNeutralForeground2); margin-bottom: var(--spacingL);
+      padding-bottom: var(--spacingS);
+      border-bottom: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+      transition: border-color var(--durationSlower) var(--curveEasyEase);
+    }
+
+    /* ═══ Typography Showcase ═══ */
+    .type-row {
+      display: flex; align-items: baseline; gap: var(--spacingXXL);
+      padding: var(--spacingL) 0;
+      border-bottom: var(--strokeWidthThin) solid var(--colorNeutralStroke3);
+      transition: border-color var(--durationSlower) var(--curveEasyEase);
+    }
+    .type-meta { min-width: 180px; flex-shrink: 0; }
+    .type-token { font-size: var(--fontSizeBase200); font-family: var(--fontFamilyMonospace); color: var(--colorBrandForeground1); }
+    .type-spec { font-size: var(--fontSizeBase100); color: var(--colorNeutralForeground4); margin-top: 2px; }
+    .type-sample { color: var(--colorNeutralForeground1); }
+
+    /* ═══ Shadow Showcase ═══ */
+    .shadow-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: var(--spacingXXL); }
+    .shadow-item {
+      background: var(--colorNeutralBackground1); border-radius: var(--borderRadiusXLarge);
+      padding: var(--spacingXXL); text-align: center; min-height: 120px;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      transition: background-color var(--durationSlower) var(--curveEasyEase);
+    }
+    .shadow-label { font-size: var(--fontSizeBase200); font-weight: var(--fontWeightSemibold); color: var(--colorNeutralForeground2); margin-bottom: 4px; }
+    .shadow-desc { font-size: var(--fontSizeBase100); color: var(--colorNeutralForeground4); }
+
+    /* ═══ Spacing Showcase ═══ */
+    .spacing-list { display: flex; flex-direction: column; gap: var(--spacingM); }
+    .spacing-row { display: flex; align-items: center; gap: var(--spacingL); }
+    .spacing-bar { height: 28px; background: var(--colorBrandBackground2); border-radius: var(--borderRadiusSmall); transition: background-color var(--durationSlower) var(--curveEasyEase); }
+    .spacing-bar-accent { background: var(--colorBrandBackground); opacity: 0.6; }
+    .spacing-label { font-size: var(--fontSizeBase200); font-family: var(--fontFamilyMonospace); color: var(--colorBrandForeground1); min-width: 120px; }
+    .spacing-value { font-size: var(--fontSizeBase200); color: var(--colorNeutralForeground4); min-width: 40px; }
+
+    /* ═══ Radius Showcase ═══ */
+    .radius-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: var(--spacingL); }
+    .radius-item { text-align: center; }
+    .radius-box {
+      width: 80px; height: 80px; margin: 0 auto var(--spacingS);
+      background: var(--colorBrandBackground2); border: 2px solid var(--colorBrandForeground1);
+      transition: background-color var(--durationSlower) var(--curveEasyEase);
+    }
+    .radius-name { font-size: var(--fontSizeBase200); font-family: var(--fontFamilyMonospace); color: var(--colorBrandForeground1); }
+    .radius-val { font-size: var(--fontSizeBase100); color: var(--colorNeutralForeground4); }
+
+    /* ═══ Component Showcase ═══ */
+    .component-row { margin-bottom: 48px; }
+    .component-label {
+      font-size: var(--fontSizeBase200); font-weight: var(--fontWeightSemibold);
+      color: var(--colorNeutralForeground3); text-transform: uppercase; letter-spacing: 0.06em;
+      margin-bottom: var(--spacingL);
+    }
+    .component-demo {
+      display: flex; flex-wrap: wrap; gap: var(--spacingM); align-items: center;
+    }
+    .component-demo-col {
+      display: flex; flex-direction: column; gap: var(--spacingM);
+    }
+
+    /* ═══ Elevation Showcase ═══ */
+    .elevation-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: var(--spacingL); }
+    .elevation-card { padding: var(--spacingXXL); }
+    .elevation-card-label { font-size: var(--fontSizeBase200); font-weight: var(--fontWeightSemibold); color: var(--colorNeutralForeground3); margin-bottom: 4px; }
+    .elevation-card-value { font-size: var(--fontSizeHero700); font-weight: var(--fontWeightSemibold); color: var(--colorBrandForeground1); margin-bottom: 4px; }
+    .elevation-card-desc { font-size: var(--fontSizeBase200); color: var(--colorNeutralForeground4); }
+
+    /* ═══ Motion Showcase ═══ */
+    .motion-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: var(--spacingL); }
+    .motion-card { padding: var(--spacingXXL); cursor: pointer; }
+    .motion-bar-track {
+      height: 6px; background: var(--colorNeutralBackground4); border-radius: 3px;
+      margin-bottom: var(--spacingM); overflow: hidden; transition: background-color var(--durationSlower) var(--curveEasyEase);
+    }
+    .motion-bar {
+      height: 100%; width: 0; background: var(--colorBrandBackground); border-radius: 3px;
+    }
+    .motion-card:hover .motion-bar { width: 100%; }
+    .motion-label { font-size: var(--fontSizeBase200); font-weight: var(--fontWeightSemibold); color: var(--colorNeutralForeground2); }
+    .motion-value { font-size: var(--fontSizeBase100); font-family: var(--fontFamilyMonospace); color: var(--colorNeutralForeground4); }
+
+    /* ═══ Code Block ═══ */
+    .code-block {
+      background: var(--colorNeutralBackground3); border: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+      border-radius: var(--borderRadiusLarge); padding: var(--spacingXXL);
+      font-family: var(--fontFamilyMonospace); font-size: var(--fontSizeBase200);
+      line-height: 1.7; color: var(--colorNeutralForeground2);
+      overflow-x: auto; white-space: pre; tab-size: 2;
+      transition: background-color var(--durationSlower) var(--curveEasyEase),
+                  border-color var(--durationSlower) var(--curveEasyEase);
+    }
+    .code-block-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: var(--spacingL);
+    }
+    .code-block-title { font-size: var(--fontSizeBase300); font-weight: var(--fontWeightSemibold); color: var(--colorNeutralForeground1); font-family: var(--fontFamilyBase); }
+
+    /* ═══ Input ═══ */
+    .fluent-input {
+      height: 32px; padding: 0 12px; font-size: var(--fontSizeBase300);
+      font-family: var(--fontFamilyBase); color: var(--colorNeutralForeground1);
+      background: var(--colorNeutralBackground1);
+      border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+      border-radius: var(--borderRadiusMedium);
+      transition: border-color var(--durationFast) var(--curveEasyEase),
+                  box-shadow var(--durationFast) var(--curveEasyEase),
+                  background-color var(--durationSlower) var(--curveEasyEase);
+      outline: none;
+    }
+    .fluent-input::placeholder { color: var(--colorNeutralForeground4); }
+    .fluent-input:focus {
+      border-color: var(--colorBrandForeground1);
+      box-shadow: 0 0 0 2px rgba(15,108,189,0.15);
+    }
+    [data-theme="dark"] .fluent-input { background: var(--colorNeutralBackground2); }
+    [data-theme="dark"] .fluent-input:focus { box-shadow: 0 0 0 2px rgba(71,158,245,0.2); }
+
+    /* ═══ Acrylic Demo ═══ */
+    .acrylic-demo {
+      position: relative; height: 200px; border-radius: var(--borderRadiusXLarge); overflow: hidden;
+      background: linear-gradient(135deg, #0f6cbd 0%, #479ef5 40%, #b4d6fa 70%, #ebf3fc 100%);
+      display: flex; align-items: center; justify-content: center; gap: var(--spacingXXL);
+    }
+    .acrylic-surface {
+      padding: var(--spacingXXL) var(--spacingXXXL);
+      border-radius: var(--borderRadiusXLarge);
+      border: var(--strokeWidthThin) solid rgba(255,255,255,0.3);
+      backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px);
+      color: white; text-align: center;
+    }
+    .acrylic-light { background: rgba(255,255,255,0.45); color: var(--colorNeutralForeground1); }
+    .acrylic-dark { background: rgba(0,0,0,0.35); }
+    .acrylic-label { font-size: var(--fontSizeBase400); font-weight: var(--fontWeightSemibold); }
+    .acrylic-sub { font-size: var(--fontSizeBase200); opacity: 0.8; margin-top: 4px; }
+
+    /* ═══ Footer ═══ */
+    .site-footer {
+      padding: 48px 0 32px; background: var(--colorNeutralBackground1);
+      border-top: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+      transition: background-color var(--durationSlower) var(--curveEasyEase),
+                  border-color var(--durationSlower) var(--curveEasyEase);
+    }
+    .footer-inner {
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: var(--spacingL);
+    }
+    .footer-brand { font-size: var(--fontSizeBase400); font-weight: var(--fontWeightSemibold); color: var(--colorNeutralForeground1); }
+    .footer-copy { font-size: var(--fontSizeBase200); color: var(--colorNeutralForeground4); }
+    .footer-links { display: flex; gap: var(--spacingL); }
+    .footer-links a { font-size: var(--fontSizeBase200); color: var(--colorNeutralForeground3); }
+    .footer-links a:hover { color: var(--colorNeutralForeground1); text-decoration: none; }
+
+    /* ═══ Scroll Reveal ═══ */
+    .reveal {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity var(--durationSlower) var(--curveDecelerateMid),
+                  transform var(--durationSlower) var(--curveDecelerateMid);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+
+    /* ═══ Sub-grid helpers ═══ */
+    .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--spacingL); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacingL); }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--spacingL); }
+
+    /* ═══ Responsive ═══ */
+    @media (max-width: 1024px) {
+      .grid-4 { grid-template-columns: repeat(2, 1fr); }
+      .grid-3 { grid-template-columns: repeat(2, 1fr); }
+      .type-row { flex-direction: column; gap: var(--spacingS); }
+      .type-meta { min-width: auto; }
+      .acrylic-demo { flex-direction: column; height: auto; padding: var(--spacingXXXL); }
+    }
+    @media (max-width: 768px) {
+      .section { padding: 56px 0; }
+      .hero { padding: 72px 0 56px; }
+      .navbar-links { display: none; }
+      .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+      .hero-meta { gap: var(--spacingXXL); }
+      .elevation-grid { grid-template-columns: 1fr; }
+      .spacing-row { flex-direction: column; align-items: flex-start; gap: var(--spacingS); }
+    }
+    @media (max-width: 480px) {
+      .container { padding: 0 var(--spacingL); }
+      .swatch-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- ═══ NAVBAR ═══ -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="#" class="navbar-logo">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="7" height="7" rx="1.5" fill="var(--colorBrandBackground)"/>
+          <rect x="11" y="2" width="7" height="7" rx="1.5" fill="var(--colorBrandBackground)" opacity="0.6"/>
+          <rect x="2" y="11" width="7" height="7" rx="1.5" fill="var(--colorBrandBackground)" opacity="0.6"/>
+          <rect x="11" y="11" width="7" height="7" rx="1.5" fill="var(--colorBrandBackground)" opacity="0.35"/>
+        </svg>
+        KolFluent
+      </a>
+      <ul class="navbar-links">
+        <li><a href="#colors">Colors</a></li>
+        <li><a href="#typography">Typography</a></li>
+        <li><a href="#shadows">Shadows</a></li>
+        <li><a href="#spacing">Spacing</a></li>
+        <li><a href="#components">Components</a></li>
+        <li><a href="#elevation">Elevation</a></li>
+        <li><a href="#materials">Materials</a></li>
+        <li><a href="#motion">Motion</a></li>
+        <li><a href="#tokens">Tokens</a></li>
+      </ul>
+      <div class="navbar-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span class="icon-sun">&#9788;</span>
+          <span class="icon-moon">&#9790;</span>
+        </button>
+        <a href="6.html" class="fluent-btn fluent-btn-primary fluent-btn-sm">View Demo</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+
+    <!-- ═══ HERO ═══ -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-content">
+          <div style="margin-bottom:var(--spacingXXL);">
+            <span class="fluent-badge fluent-badge-brand">Fluent 2 Design System</span>
+          </div>
+          <h1>Design with<br><span class="brand-text">Fluent precision.</span></h1>
+          <p class="hero-desc">KolFluent is a complete design system following Microsoft's Fluent 2 guidance. Authentic tokens, materials, and interaction patterns — ready to drop into any project.</p>
+          <div class="hero-actions">
+            <a href="#tokens" class="fluent-btn fluent-btn-primary fluent-btn-lg">Get tokens</a>
+            <a href="https://fluent2.microsoft.design/" class="fluent-btn fluent-btn-outline fluent-btn-lg" target="_blank" rel="noopener">Fluent 2 Docs</a>
+            <a href="KolFluent.md" class="fluent-btn fluent-btn-subtle fluent-btn-lg">Read full spec</a>
+          </div>
+          <div class="hero-meta">
+            <div class="hero-meta-item">
+              <span class="hero-meta-value">39+</span>
+              <span class="hero-meta-label">Color tokens</span>
+            </div>
+            <div class="hero-meta-item">
+              <span class="hero-meta-value">6</span>
+              <span class="hero-meta-label">Elevation levels</span>
+            </div>
+            <div class="hero-meta-item">
+              <span class="hero-meta-value">8</span>
+              <span class="hero-meta-label">Motion curves</span>
+            </div>
+            <div class="hero-meta-item">
+              <span class="hero-meta-value">2</span>
+              <span class="hero-meta-label">Themes</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ COLORS ═══ -->
+    <section class="section section-alt reveal" id="colors">
+      <div class="container">
+        <p class="section-overline">Color</p>
+        <h2 class="section-title">Color tokens</h2>
+        <p class="section-description">Every color is a semantic token from the Fluent 2 palette. Toggle dark mode to see how each token adapts.</p>
+
+        <div class="color-category">
+          <h3 class="color-category-title">Brand</h3>
+          <div class="swatch-grid" id="brandSwatches"></div>
+        </div>
+
+        <div class="color-category">
+          <h3 class="color-category-title">Neutral Backgrounds</h3>
+          <div class="swatch-grid" id="neutralBgSwatches"></div>
+        </div>
+
+        <div class="color-category">
+          <h3 class="color-category-title">Neutral Foregrounds</h3>
+          <div class="swatch-grid" id="neutralFgSwatches"></div>
+        </div>
+
+        <div class="color-category">
+          <h3 class="color-category-title">Strokes</h3>
+          <div class="swatch-grid" id="strokeSwatches"></div>
+        </div>
+
+        <div class="color-category">
+          <h3 class="color-category-title">Status</h3>
+          <div class="swatch-grid" id="statusSwatches"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ TYPOGRAPHY ═══ -->
+    <section class="section reveal" id="typography">
+      <div class="container">
+        <p class="section-overline">Typography</p>
+        <h2 class="section-title">Type ramp</h2>
+        <p class="section-description">Fluent 2 uses a single font family — Segoe UI Variable — with a 10-step size ramp. Hierarchy is conveyed by size and weight alone.</p>
+
+        <div class="type-row">
+          <div class="type-meta">
+            <div class="type-token">fontSizeHero1000</div>
+            <div class="type-spec">68px / 92px · Semibold</div>
+          </div>
+          <div class="type-sample" style="font-size:48px;font-weight:600;line-height:1.1;letter-spacing:-0.02em;">Display</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">
+            <div class="type-token">fontSizeHero900</div>
+            <div class="type-spec">40px / 52px · Semibold</div>
+          </div>
+          <div class="type-sample" style="font-size:40px;font-weight:600;line-height:52px;">Large Title</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">
+            <div class="type-token">fontSizeHero800</div>
+            <div class="type-spec">32px / 40px · Semibold</div>
+          </div>
+          <div class="type-sample" style="font-size:32px;font-weight:600;line-height:40px;">Title 1</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">
+            <div class="type-token">fontSizeHero700</div>
+            <div class="type-spec">28px / 36px · Semibold</div>
+          </div>
+          <div class="type-sample" style="font-size:28px;font-weight:600;line-height:36px;">Title 2</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">
+            <div class="type-token">fontSizeBase600</div>
+            <div class="type-spec">24px / 32px · Semibold</div>
+          </div>
+          <div class="type-sample" style="font-size:24px;font-weight:600;line-height:32px;">Title 3</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">
+            <div class="type-token">fontSizeBase500</div>
+            <div class="type-spec">20px / 26px · Semibold</div>
+          </div>
+          <div class="type-sample" style="font-size:20px;font-weight:600;line-height:26px;">Subtitle 1</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">
+            <div class="type-token">fontSizeBase400</div>
+            <div class="type-spec">16px / 22px · Regular</div>
+          </div>
+          <div class="type-sample" style="font-size:16px;font-weight:400;line-height:22px;">Subtitle 2 — Used for descriptions and larger body text.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">
+            <div class="type-token">fontSizeBase300</div>
+            <div class="type-spec">14px / 20px · Regular</div>
+          </div>
+          <div class="type-sample" style="font-size:14px;font-weight:400;line-height:20px;">Body 1 — The default body text size. Buttons, nav links, and most UI text.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">
+            <div class="type-token">fontSizeBase200</div>
+            <div class="type-spec">12px / 16px · Regular</div>
+          </div>
+          <div class="type-sample" style="font-size:12px;font-weight:400;line-height:16px;">Caption 1 — Secondary labels, overlines, and footer text across the interface.</div>
+        </div>
+        <div class="type-row">
+          <div class="type-meta">
+            <div class="type-token">fontSizeBase100</div>
+            <div class="type-spec">10px / 14px · Medium</div>
+          </div>
+          <div class="type-sample" style="font-size:10px;font-weight:500;line-height:14px;">Caption 2 — Badges, fine print, and small metadata.</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SHADOWS ═══ -->
+    <section class="section section-alt reveal" id="shadows">
+      <div class="container">
+        <p class="section-overline">Elevation</p>
+        <h2 class="section-title">Shadow system</h2>
+        <p class="section-description">A 6-step elevation ramp. Each shadow is a two-layer composite: directional key light + ambient fill. Dark mode uses ~3.4x higher alpha.</p>
+
+        <div class="shadow-grid">
+          <div class="shadow-item" style="box-shadow:var(--shadow2);">
+            <div class="shadow-label">shadow2</div>
+            <div class="shadow-desc">Cards (resting)</div>
+          </div>
+          <div class="shadow-item" style="box-shadow:var(--shadow4);">
+            <div class="shadow-label">shadow4</div>
+            <div class="shadow-desc">Navbar on scroll</div>
+          </div>
+          <div class="shadow-item" style="box-shadow:var(--shadow8);">
+            <div class="shadow-label">shadow8</div>
+            <div class="shadow-desc">Cards (hover)</div>
+          </div>
+          <div class="shadow-item" style="box-shadow:var(--shadow16);">
+            <div class="shadow-label">shadow16</div>
+            <div class="shadow-desc">Popovers</div>
+          </div>
+          <div class="shadow-item" style="box-shadow:var(--shadow28);">
+            <div class="shadow-label">shadow28</div>
+            <div class="shadow-desc">Dialogs</div>
+          </div>
+          <div class="shadow-item" style="box-shadow:var(--shadow64);">
+            <div class="shadow-label">shadow64</div>
+            <div class="shadow-desc">Overlays</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SPACING & RADIUS ═══ -->
+    <section class="section reveal" id="spacing">
+      <div class="container">
+        <p class="section-overline">Layout</p>
+        <h2 class="section-title">Spacing & radius</h2>
+        <p class="section-description">A 10-step spacing scale and 6-step radius scale provide consistent spatial rhythm across every component.</p>
+
+        <div class="grid-2" style="gap:48px;">
+          <div>
+            <h3 class="color-category-title">Spacing scale</h3>
+            <div class="spacing-list">
+              <div class="spacing-row"><span class="spacing-label">spacingXXS</span><span class="spacing-value">2px</span><div class="spacing-bar" style="width:2px;"></div></div>
+              <div class="spacing-row"><span class="spacing-label">spacingXS</span><span class="spacing-value">4px</span><div class="spacing-bar" style="width:4px;"></div></div>
+              <div class="spacing-row"><span class="spacing-label">spacingSNudge</span><span class="spacing-value">6px</span><div class="spacing-bar" style="width:6px;"></div></div>
+              <div class="spacing-row"><span class="spacing-label">spacingS</span><span class="spacing-value">8px</span><div class="spacing-bar" style="width:16px;"></div></div>
+              <div class="spacing-row"><span class="spacing-label">spacingMNudge</span><span class="spacing-value">10px</span><div class="spacing-bar" style="width:20px;"></div></div>
+              <div class="spacing-row"><span class="spacing-label">spacingM</span><span class="spacing-value">12px</span><div class="spacing-bar" style="width:24px;"></div></div>
+              <div class="spacing-row"><span class="spacing-label">spacingL</span><span class="spacing-value">16px</span><div class="spacing-bar spacing-bar-accent" style="width:40px;"></div></div>
+              <div class="spacing-row"><span class="spacing-label">spacingXL</span><span class="spacing-value">20px</span><div class="spacing-bar spacing-bar-accent" style="width:60px;"></div></div>
+              <div class="spacing-row"><span class="spacing-label">spacingXXL</span><span class="spacing-value">24px</span><div class="spacing-bar spacing-bar-accent" style="width:80px;"></div></div>
+              <div class="spacing-row"><span class="spacing-label">spacingXXXL</span><span class="spacing-value">32px</span><div class="spacing-bar spacing-bar-accent" style="width:120px;"></div></div>
+            </div>
+          </div>
+          <div>
+            <h3 class="color-category-title">Border radius</h3>
+            <div class="radius-grid">
+              <div class="radius-item"><div class="radius-box" style="border-radius:0;"></div><div class="radius-name">None</div><div class="radius-val">0</div></div>
+              <div class="radius-item"><div class="radius-box" style="border-radius:2px;"></div><div class="radius-name">Small</div><div class="radius-val">2px</div></div>
+              <div class="radius-item"><div class="radius-box" style="border-radius:4px;"></div><div class="radius-name">Medium</div><div class="radius-val">4px</div></div>
+              <div class="radius-item"><div class="radius-box" style="border-radius:6px;"></div><div class="radius-name">Large</div><div class="radius-val">6px</div></div>
+              <div class="radius-item"><div class="radius-box" style="border-radius:8px;"></div><div class="radius-name">XLarge</div><div class="radius-val">8px</div></div>
+              <div class="radius-item"><div class="radius-box" style="border-radius:50%;"></div><div class="radius-name">Circular</div><div class="radius-val">10000px</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ COMPONENTS ═══ -->
+    <section class="section section-alt reveal" id="components">
+      <div class="container">
+        <p class="section-overline">Components</p>
+        <h2 class="section-title">Component primitives</h2>
+        <p class="section-description">Core building blocks following Fluent 2 component specifications. Every component respects the token system and adapts to both themes.</p>
+
+        <div class="component-row">
+          <div class="component-label">Buttons — Variants</div>
+          <div class="component-demo">
+            <button class="fluent-btn fluent-btn-primary">Primary</button>
+            <button class="fluent-btn fluent-btn-outline">Outline</button>
+            <button class="fluent-btn fluent-btn-subtle">Subtle</button>
+          </div>
+        </div>
+
+        <div class="component-row">
+          <div class="component-label">Buttons — Sizes</div>
+          <div class="component-demo">
+            <button class="fluent-btn fluent-btn-primary fluent-btn-sm">Small</button>
+            <button class="fluent-btn fluent-btn-primary">Default</button>
+            <button class="fluent-btn fluent-btn-primary fluent-btn-lg">Large</button>
+          </div>
+        </div>
+
+        <div class="component-row">
+          <div class="component-label">Badges</div>
+          <div class="component-demo">
+            <span class="fluent-badge fluent-badge-brand">Brand</span>
+            <span class="fluent-badge fluent-badge-success">Success</span>
+            <span class="fluent-badge fluent-badge-warning">Warning</span>
+            <span class="fluent-badge fluent-badge-danger">Danger</span>
+            <span class="fluent-badge fluent-badge-muted">Muted</span>
+          </div>
+        </div>
+
+        <div class="component-row">
+          <div class="component-label">Input</div>
+          <div class="component-demo">
+            <input class="fluent-input" type="text" placeholder="Enter workflow name..." style="width:280px;">
+            <input class="fluent-input" type="text" placeholder="Disabled" disabled style="width:180px;opacity:0.5;">
+          </div>
+        </div>
+
+        <div class="component-row">
+          <div class="component-label">Cards</div>
+          <div class="grid-3">
+            <div class="fluent-card">
+              <div style="font-size:var(--fontSizeBase200);color:var(--colorNeutralForeground3);margin-bottom:8px;font-weight:var(--fontWeightMedium);">Active workflows</div>
+              <div style="font-size:var(--fontSizeBase600);font-weight:var(--fontWeightSemibold);margin-bottom:4px;">1,284</div>
+              <div style="font-size:var(--fontSizeBase100);color:var(--colorStatusSuccessForeground1);font-weight:var(--fontWeightMedium);">&#9650; 12% this week</div>
+            </div>
+            <div class="fluent-card">
+              <div style="font-size:var(--fontSizeBase200);color:var(--colorNeutralForeground3);margin-bottom:8px;font-weight:var(--fontWeightMedium);">Tasks routed today</div>
+              <div style="font-size:var(--fontSizeBase600);font-weight:var(--fontWeightSemibold);margin-bottom:4px;">3,847</div>
+              <div style="font-size:var(--fontSizeBase100);color:var(--colorStatusSuccessForeground1);font-weight:var(--fontWeightMedium);">&#9650; 8% vs yesterday</div>
+            </div>
+            <div class="fluent-card">
+              <div style="font-size:var(--fontSizeBase200);color:var(--colorNeutralForeground3);margin-bottom:8px;font-weight:var(--fontWeightMedium);">Avg response time</div>
+              <div style="font-size:var(--fontSizeBase600);font-weight:var(--fontWeightSemibold);color:var(--colorBrandForeground1);margin-bottom:4px;">&lt;94ms</div>
+              <div style="font-size:var(--fontSizeBase100);color:var(--colorNeutralForeground4);font-weight:var(--fontWeightMedium);">99.97% uptime SLA</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ ELEVATION CARDS ═══ -->
+    <section class="section reveal" id="elevation">
+      <div class="container">
+        <p class="section-overline">Depth</p>
+        <h2 class="section-title">Elevation in practice</h2>
+        <p class="section-description">Fluent 2 uses elevation to convey the layered nature of the UI. Higher elements cast deeper shadows and demand more attention.</p>
+
+        <div class="elevation-grid">
+          <div class="fluent-card elevation-card" style="box-shadow:var(--shadow2);">
+            <div class="elevation-card-label">Surface</div>
+            <div class="elevation-card-value">shadow2</div>
+            <div class="elevation-card-desc">Cards, list items — resting content surfaces.</div>
+          </div>
+          <div class="fluent-card elevation-card" style="box-shadow:var(--shadow8);">
+            <div class="elevation-card-label">Raised</div>
+            <div class="elevation-card-value">shadow8</div>
+            <div class="elevation-card-desc">Hovered cards, dropdowns, floating toolbars.</div>
+          </div>
+          <div class="fluent-card elevation-card" style="box-shadow:var(--shadow16);">
+            <div class="elevation-card-label">Floating</div>
+            <div class="elevation-card-value">shadow16</div>
+            <div class="elevation-card-desc">Popovers, tooltips, teaching callouts.</div>
+          </div>
+          <div class="fluent-card elevation-card" style="box-shadow:var(--shadow28);">
+            <div class="elevation-card-label">Dialog</div>
+            <div class="elevation-card-value">shadow28</div>
+            <div class="elevation-card-desc">Modal dialogs, command bars, side panels.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ MATERIALS ═══ -->
+    <section class="section section-alt reveal" id="materials">
+      <div class="container">
+        <p class="section-overline">Materials</p>
+        <h2 class="section-title">Acrylic & Mica</h2>
+        <p class="section-description">Fluent 2 materials use translucency and blur to create depth and context. Acrylic for in-app surfaces, Mica for background tinting.</p>
+
+        <div class="acrylic-demo">
+          <div class="acrylic-surface acrylic-light">
+            <div class="acrylic-label">Acrylic Light</div>
+            <div class="acrylic-sub">rgba(255,255,255,0.45)</div>
+          </div>
+          <div class="acrylic-surface acrylic-dark">
+            <div class="acrylic-label">Acrylic Dark</div>
+            <div class="acrylic-sub">rgba(0,0,0,0.35)</div>
+          </div>
+        </div>
+
+        <div style="margin-top:48px;">
+          <h3 class="color-category-title">Navbar material example</h3>
+          <div class="grid-2" style="margin-top:var(--spacingL);">
+            <div class="fluent-card" style="text-align:center;">
+              <div style="font-size:var(--fontSizeBase200);font-weight:var(--fontWeightSemibold);color:var(--colorNeutralForeground3);margin-bottom:var(--spacingS);">LIGHT MODE</div>
+              <code style="font-size:var(--fontSizeBase200);">rgba(255,255,255,0.72)</code>
+              <div style="font-size:var(--fontSizeBase100);color:var(--colorNeutralForeground4);margin-top:4px;">saturate(180%) blur(20px)</div>
+            </div>
+            <div class="fluent-card" style="text-align:center;">
+              <div style="font-size:var(--fontSizeBase200);font-weight:var(--fontWeightSemibold);color:var(--colorNeutralForeground3);margin-bottom:var(--spacingS);">DARK MODE</div>
+              <code style="font-size:var(--fontSizeBase200);">rgba(41,41,41,0.72)</code>
+              <div style="font-size:var(--fontSizeBase100);color:var(--colorNeutralForeground4);margin-top:4px;">saturate(180%) blur(20px)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ MOTION ═══ -->
+    <section class="section reveal" id="motion">
+      <div class="container">
+        <p class="section-overline">Motion</p>
+        <h2 class="section-title">Duration & easing</h2>
+        <p class="section-description">Eight duration tokens and eight easing curves. Hover each card to see the timing in action.</p>
+
+        <h3 class="color-category-title">Duration tokens</h3>
+        <div class="motion-grid" style="margin-bottom:48px;">
+          <div class="motion-card fluent-card">
+            <div class="motion-bar-track"><div class="motion-bar" style="transition:width 50ms var(--curveEasyEase);"></div></div>
+            <div class="motion-label">UltraFast</div><div class="motion-value">50ms</div>
+          </div>
+          <div class="motion-card fluent-card">
+            <div class="motion-bar-track"><div class="motion-bar" style="transition:width 100ms var(--curveEasyEase);"></div></div>
+            <div class="motion-label">Faster</div><div class="motion-value">100ms</div>
+          </div>
+          <div class="motion-card fluent-card">
+            <div class="motion-bar-track"><div class="motion-bar" style="transition:width 150ms var(--curveEasyEase);"></div></div>
+            <div class="motion-label">Fast</div><div class="motion-value">150ms</div>
+          </div>
+          <div class="motion-card fluent-card">
+            <div class="motion-bar-track"><div class="motion-bar" style="transition:width 200ms var(--curveEasyEase);"></div></div>
+            <div class="motion-label">Normal</div><div class="motion-value">200ms</div>
+          </div>
+          <div class="motion-card fluent-card">
+            <div class="motion-bar-track"><div class="motion-bar" style="transition:width 250ms var(--curveEasyEase);"></div></div>
+            <div class="motion-label">Gentle</div><div class="motion-value">250ms</div>
+          </div>
+          <div class="motion-card fluent-card">
+            <div class="motion-bar-track"><div class="motion-bar" style="transition:width 300ms var(--curveEasyEase);"></div></div>
+            <div class="motion-label">Slow</div><div class="motion-value">300ms</div>
+          </div>
+          <div class="motion-card fluent-card">
+            <div class="motion-bar-track"><div class="motion-bar" style="transition:width 400ms var(--curveEasyEase);"></div></div>
+            <div class="motion-label">Slower</div><div class="motion-value">400ms</div>
+          </div>
+          <div class="motion-card fluent-card">
+            <div class="motion-bar-track"><div class="motion-bar" style="transition:width 500ms var(--curveEasyEase);"></div></div>
+            <div class="motion-label">UltraSlow</div><div class="motion-value">500ms</div>
+          </div>
+        </div>
+
+        <h3 class="color-category-title">Easing curves</h3>
+        <div class="motion-grid">
+          <div class="motion-card fluent-card">
+            <div class="motion-bar-track"><div class="motion-bar" style="transition:width 400ms var(--curveDecelerateMax);"></div></div>
+            <div class="motion-label">DecelerateMax</div><div class="motion-value">cubic-bezier(0.1, 0.9, 0.2, 1)</div>
+          </div>
+          <div class="motion-card fluent-card">
+            <div class="motion-bar-track"><div class="motion-bar" style="transition:width 400ms var(--curveDecelerateMid);"></div></div>
+            <div class="motion-label">DecelerateMid</div><div class="motion-value">cubic-bezier(0, 0, 0, 1)</div>
+          </div>
+          <div class="motion-card fluent-card">
+            <div class="motion-bar-track"><div class="motion-bar" style="transition:width 400ms var(--curveAccelerateMax);"></div></div>
+            <div class="motion-label">AccelerateMax</div><div class="motion-value">cubic-bezier(1, 0, 1, 1)</div>
+          </div>
+          <div class="motion-card fluent-card">
+            <div class="motion-bar-track"><div class="motion-bar" style="transition:width 400ms var(--curveEasyEase);"></div></div>
+            <div class="motion-label">EasyEase</div><div class="motion-value">cubic-bezier(0.33, 0, 0.67, 1)</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ QUICK-START TOKENS ═══ -->
+    <section class="section section-alt reveal" id="tokens">
+      <div class="container">
+        <p class="section-overline">Get Started</p>
+        <h2 class="section-title">Quick-start tokens</h2>
+        <p class="section-description">Copy this CSS block into any project to bootstrap the KolFluent design system. All tokens included.</p>
+
+        <div style="margin-bottom:var(--spacingXXL);">
+          <div class="code-block-header">
+            <span class="code-block-title">Light theme — :root</span>
+            <button class="fluent-btn fluent-btn-subtle fluent-btn-sm" onclick="copyTokens('light')">Copy CSS</button>
+          </div>
+          <div class="code-block" id="lightTokens">:root {
+  --colorBrandBackground: #0f6cbd;
+  --colorBrandBackgroundHover: #115ea3;
+  --colorBrandBackgroundPressed: #0c3b5e;
+  --colorBrandBackground2: #ebf3fc;
+  --colorBrandForeground1: #0f6cbd;
+  --colorBrandForeground2: #115ea3;
+  --colorBrandForegroundLink: #115ea3;
+  --colorBrandStroke1: #0f6cbd;
+  --colorNeutralBackground1: #ffffff;
+  --colorNeutralBackground2: #fafafa;
+  --colorNeutralBackground3: #f5f5f5;
+  --colorNeutralForeground1: #242424;
+  --colorNeutralForeground2: #424242;
+  --colorNeutralForeground3: #616161;
+  --colorNeutralStroke1: #d1d1d1;
+  --colorNeutralStroke2: #e0e0e0;
+  --fontFamilyBase: 'Segoe UI Variable', 'Segoe UI', system-ui, sans-serif;
+  --fontSizeBase300: 14px;
+  --fontSizeBase400: 16px;
+  --fontSizeBase600: 24px;
+  --borderRadiusMedium: 4px;
+  --borderRadiusXLarge: 8px;
+  --shadow2: 0px 1px 2px rgba(0,0,0,0.14), 0px 0px 2px rgba(0,0,0,0.12);
+  --shadow8: 0px 4px 8px rgba(0,0,0,0.14), 0px 0px 2px rgba(0,0,0,0.12);
+  /* See KolFluent.md for the complete token set */
+}</div>
+        </div>
+
+        <div>
+          <div class="code-block-header">
+            <span class="code-block-title">Dark theme override</span>
+            <button class="fluent-btn fluent-btn-subtle fluent-btn-sm" onclick="copyTokens('dark')">Copy CSS</button>
+          </div>
+          <div class="code-block" id="darkTokens">[data-theme="dark"] {
+  --colorBrandBackground: #115ea3;
+  --colorBrandBackgroundHover: #0f6cbd;
+  --colorBrandBackground2: #0a2e4a;
+  --colorBrandForeground1: #479ef5;
+  --colorBrandForeground2: #62abf5;
+  --colorBrandForegroundLink: #479ef5;
+  --colorBrandStroke1: #479ef5;
+  --colorNeutralBackground1: #292929;
+  --colorNeutralBackground2: #1f1f1f;
+  --colorNeutralBackground3: #141414;
+  --colorNeutralForeground1: #ffffff;
+  --colorNeutralForeground2: #d6d6d6;
+  --colorNeutralForeground3: #adadad;
+  --colorNeutralStroke1: #666666;
+  --colorNeutralStroke2: #525252;
+  --shadow2: 0px 1px 2px rgba(0,0,0,0.48), 0px 0px 2px rgba(0,0,0,0.24);
+  --shadow8: 0px 4px 8px rgba(0,0,0,0.48), 0px 0px 2px rgba(0,0,0,0.24);
+  /* See KolFluent.md for the complete token set */
+}</div>
+        </div>
+
+        <div style="margin-top:48px;text-align:center;">
+          <p style="font-size:var(--fontSizeBase400);color:var(--colorNeutralForeground2);margin-bottom:var(--spacingXXL);">For the complete token set with all 39+ color tokens, 10 font sizes, 8 durations, 8 curves, and full dark theme — see the specification.</p>
+          <a href="KolFluent.md" class="fluent-btn fluent-btn-primary fluent-btn-lg">Read KolFluent.md</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <span class="footer-brand">KolFluent</span>
+        <span class="footer-copy">Following Microsoft's Fluent 2 Design System</span>
+        <div class="footer-links">
+          <a href="KolFluent.md">Spec</a>
+          <a href="6.html">Demo</a>
+          <a href="https://fluent2.microsoft.design/" target="_blank" rel="noopener">Fluent 2</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ═══ Theme Toggle ═══ */
+    const toggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+
+    const saved = localStorage.getItem('kolfluent-theme');
+    if (saved) html.setAttribute('data-theme', saved);
+
+    toggle.addEventListener('click', () => {
+      const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('kolfluent-theme', next);
+    });
+
+    /* ═══ Navbar Shadow ═══ */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 8);
+    }, { passive: true });
+
+    /* ═══ Scroll Reveal ═══ */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* ═══ Copy Tokens ═══ */
+    function copyTokens(type) {
+      const el = document.getElementById(type === 'light' ? 'lightTokens' : 'darkTokens');
+      navigator.clipboard.writeText(el.textContent).then(() => {
+        const btn = el.previousElementSibling.querySelector('button');
+        const orig = btn.textContent;
+        btn.textContent = 'Copied!';
+        setTimeout(() => btn.textContent = orig, 1500);
+      });
+    }
+
+    /* ═══ Dynamic Color Swatches ═══ */
+    function renderSwatches() {
+      const style = getComputedStyle(document.documentElement);
+
+      const groups = {
+        brandSwatches: [
+          ['BrandBackground', '--colorBrandBackground'],
+          ['BrandBgHover', '--colorBrandBackgroundHover'],
+          ['BrandBgPressed', '--colorBrandBackgroundPressed'],
+          ['BrandBg2', '--colorBrandBackground2'],
+          ['BrandFg1', '--colorBrandForeground1'],
+          ['BrandFg2', '--colorBrandForeground2'],
+          ['BrandStroke1', '--colorBrandStroke1'],
+        ],
+        neutralBgSwatches: [
+          ['Background1', '--colorNeutralBackground1'],
+          ['Background2', '--colorNeutralBackground2'],
+          ['Background3', '--colorNeutralBackground3'],
+          ['Background4', '--colorNeutralBackground4'],
+          ['Background5', '--colorNeutralBackground5'],
+          ['Background6', '--colorNeutralBackground6'],
+        ],
+        neutralFgSwatches: [
+          ['Foreground1', '--colorNeutralForeground1'],
+          ['Foreground2', '--colorNeutralForeground2'],
+          ['Foreground3', '--colorNeutralForeground3'],
+          ['Foreground4', '--colorNeutralForeground4'],
+          ['FgDisabled', '--colorNeutralForegroundDisabled'],
+          ['FgOnBrand', '--colorNeutralForegroundOnBrand'],
+        ],
+        strokeSwatches: [
+          ['Stroke1', '--colorNeutralStroke1'],
+          ['Stroke2', '--colorNeutralStroke2'],
+          ['Stroke3', '--colorNeutralStroke3'],
+          ['StrokeAccessible', '--colorNeutralStrokeAccessible'],
+        ],
+        statusSwatches: [
+          ['SuccessBg', '--colorStatusSuccessBackground1'],
+          ['SuccessFg', '--colorStatusSuccessForeground1'],
+          ['WarningBg', '--colorStatusWarningBackground1'],
+          ['WarningFg', '--colorStatusWarningForeground1'],
+        ],
+      };
+
+      for (const [containerId, tokens] of Object.entries(groups)) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = '';
+        for (const [name, prop] of tokens) {
+          const value = style.getPropertyValue(prop).trim();
+          const div = document.createElement('div');
+          div.className = 'swatch';
+          div.innerHTML = `<div class="swatch-color" style="background:var(${prop});"></div><div class="swatch-info"><div class="swatch-name">${name}</div><div class="swatch-value">${value}</div></div>`;
+          container.appendChild(div);
+        }
+      }
+    }
+
+    renderSwatches();
+
+    // Re-render swatches when theme changes
+    const themeObserver = new MutationObserver(() => {
+      requestAnimationFrame(renderSwatches);
+    });
+    themeObserver.observe(html, { attributes: true, attributeFilter: ['data-theme'] });
+  </script>
+
+</body>
+</html>

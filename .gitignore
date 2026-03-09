@@ -1,0 +1,7 @@
+.DS_Store
+.claude/
+.agent/
+.agents/
+.kilocode/
+skills-lock.json
+node_modules/

@@ -1,0 +1,1986 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flowstate — Built with Fluent Design 2</title>
+  <style>
+    /* ═══════════════════════════════════════════════
+       FLUENT 2 DESIGN TOKENS — Light Theme
+       Authentic Microsoft Fluent Design System values
+       ═══════════════════════════════════════════════ */
+    :root {
+      /* Brand */
+      --colorBrandBackground: #0f6cbd;
+      --colorBrandBackgroundHover: #115ea3;
+      --colorBrandBackgroundPressed: #0c3b5e;
+      --colorBrandBackgroundSelected: #115ea3;
+      --colorBrandBackground2: #ebf3fc;
+      --colorBrandBackground2Hover: #b4d6fa;
+      --colorBrandForeground1: #0f6cbd;
+      --colorBrandForeground2: #115ea3;
+      --colorBrandForegroundLink: #115ea3;
+      --colorBrandForegroundLinkHover: #0f548c;
+      --colorBrandStroke1: #0f6cbd;
+
+      /* Neutral Backgrounds */
+      --colorNeutralBackground1: #ffffff;
+      --colorNeutralBackground1Hover: #f5f5f5;
+      --colorNeutralBackground1Pressed: #e0e0e0;
+      --colorNeutralBackground2: #fafafa;
+      --colorNeutralBackground3: #f5f5f5;
+      --colorNeutralBackground4: #f0f0f0;
+      --colorNeutralBackground5: #ebebeb;
+      --colorNeutralBackground6: #e0e0e0;
+
+      /* Neutral Foregrounds */
+      --colorNeutralForeground1: #242424;
+      --colorNeutralForeground2: #424242;
+      --colorNeutralForeground3: #616161;
+      --colorNeutralForeground4: #707070;
+      --colorNeutralForegroundDisabled: #bdbdbd;
+      --colorNeutralForegroundOnBrand: #ffffff;
+
+      /* Neutral Strokes */
+      --colorNeutralStroke1: #d1d1d1;
+      --colorNeutralStroke2: #e0e0e0;
+      --colorNeutralStroke3: #f0f0f0;
+      --colorNeutralStrokeAccessible: #616161;
+
+      /* Subtle */
+      --colorSubtleBackground: transparent;
+      --colorSubtleBackgroundHover: #f5f5f5;
+      --colorSubtleBackgroundPressed: #e0e0e0;
+
+      /* Compound Brand */
+      --colorCompoundBrandBackground: #0f6cbd;
+      --colorCompoundBrandBackgroundHover: #115ea3;
+      --colorCompoundBrandStroke: #0f6cbd;
+
+      /* Status */
+      --colorStatusSuccessBackground1: #f1faf1;
+      --colorStatusSuccessForeground1: #0e700e;
+      --colorStatusWarningBackground1: #fff9f5;
+      --colorStatusWarningForeground1: #bc4b09;
+
+      /* Font Family — Authentic Fluent 2 */
+      --fontFamilyBase: 'Segoe UI Variable', 'Segoe UI', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      --fontFamilyMonospace: Consolas, 'Courier New', Courier, monospace;
+
+      /* Font Sizes — Fluent 2 Type Ramp */
+      --fontSizeBase100: 10px;   /* Caption 2 */
+      --fontSizeBase200: 12px;   /* Caption 1 */
+      --fontSizeBase300: 14px;   /* Body 1 */
+      --fontSizeBase400: 16px;   /* Subtitle 2 */
+      --fontSizeBase500: 20px;   /* Subtitle 1 */
+      --fontSizeBase600: 24px;   /* Title 3 */
+      --fontSizeHero700: 28px;   /* Title 2 */
+      --fontSizeHero800: 32px;   /* Title 1 */
+      --fontSizeHero900: 40px;   /* Large Title */
+      --fontSizeHero1000: 68px;  /* Display */
+
+      /* Font Weights */
+      --fontWeightRegular: 400;
+      --fontWeightMedium: 500;
+      --fontWeightSemibold: 600;
+      --fontWeightBold: 700;
+
+      /* Line Heights — Fluent 2 Type Ramp */
+      --lineHeightBase100: 14px;
+      --lineHeightBase200: 16px;
+      --lineHeightBase300: 20px;
+      --lineHeightBase400: 22px;
+      --lineHeightBase500: 26px;
+      --lineHeightBase600: 32px;
+      --lineHeightHero700: 36px;
+      --lineHeightHero800: 40px;
+      --lineHeightHero900: 52px;
+      --lineHeightHero1000: 92px;
+
+      /* Border Radius */
+      --borderRadiusNone: 0;
+      --borderRadiusSmall: 2px;
+      --borderRadiusMedium: 4px;
+      --borderRadiusLarge: 6px;
+      --borderRadiusXLarge: 8px;
+      --borderRadiusCircular: 10000px;
+
+      /* Spacing */
+      --spacingXXS: 2px;
+      --spacingXS: 4px;
+      --spacingSNudge: 6px;
+      --spacingS: 8px;
+      --spacingMNudge: 10px;
+      --spacingM: 12px;
+      --spacingL: 16px;
+      --spacingXL: 20px;
+      --spacingXXL: 24px;
+      --spacingXXXL: 32px;
+
+      /* Stroke Widths */
+      --strokeWidthThin: 1px;
+      --strokeWidthThick: 2px;
+
+      /* Shadows — Fluent 2 Elevation */
+      --shadow2: 0px 1px 2px rgba(0,0,0,0.14), 0px 0px 2px rgba(0,0,0,0.12);
+      --shadow4: 0px 2px 4px rgba(0,0,0,0.14), 0px 0px 2px rgba(0,0,0,0.12);
+      --shadow8: 0px 4px 8px rgba(0,0,0,0.14), 0px 0px 2px rgba(0,0,0,0.12);
+      --shadow16: 0px 8px 16px rgba(0,0,0,0.14), 0px 0px 2px rgba(0,0,0,0.12);
+      --shadow28: 0px 14px 28px rgba(0,0,0,0.14), 0px 0px 8px rgba(0,0,0,0.12);
+      --shadow64: 0px 32px 64px rgba(0,0,0,0.14), 0px 0px 8px rgba(0,0,0,0.12);
+
+      /* Motion — Fluent 2 Duration */
+      --durationUltraFast: 50ms;
+      --durationFaster: 100ms;
+      --durationFast: 150ms;
+      --durationNormal: 200ms;
+      --durationGentle: 250ms;
+      --durationSlow: 300ms;
+      --durationSlower: 400ms;
+      --durationUltraSlow: 500ms;
+
+      /* Motion — Fluent 2 Easing Curves */
+      --curveDecelerateMax: cubic-bezier(0.1, 0.9, 0.2, 1);
+      --curveDecelerateMid: cubic-bezier(0, 0, 0, 1);
+      --curveDecelerateMin: cubic-bezier(0.33, 0, 0.1, 1);
+      --curveAccelerateMax: cubic-bezier(1, 0, 1, 1);
+      --curveAccelerateMid: cubic-bezier(0.7, 0, 1, 0.5);
+      --curveAccelerateMin: cubic-bezier(0.8, 0, 0.78, 1);
+      --curveEasyEase: cubic-bezier(0.33, 0, 0.67, 1);
+      --curveEasyEaseMax: cubic-bezier(0.8, 0, 0.2, 1);
+    }
+
+    /* ═══════════════════════════════════════════════
+       DARK THEME — Fluent 2 webDarkTheme tokens
+       ═══════════════════════════════════════════════ */
+    [data-theme="dark"] {
+      --colorBrandBackground: #115ea3;
+      --colorBrandBackgroundHover: #0f6cbd;
+      --colorBrandBackgroundPressed: #0f548c;
+      --colorBrandBackground2: #0a2e4a;
+      --colorBrandForeground1: #479ef5;
+      --colorBrandForeground2: #62abf5;
+      --colorBrandForegroundLink: #479ef5;
+      --colorBrandForegroundLinkHover: #77bcf8;
+      --colorBrandStroke1: #479ef5;
+
+      --colorNeutralBackground1: #292929;
+      --colorNeutralBackground1Hover: #3d3d3d;
+      --colorNeutralBackground2: #1f1f1f;
+      --colorNeutralBackground3: #141414;
+      --colorNeutralBackground4: #0f0f0f;
+      --colorNeutralBackground5: #0a0a0a;
+      --colorNeutralBackground6: #333333;
+
+      --colorNeutralForeground1: #ffffff;
+      --colorNeutralForeground2: #d6d6d6;
+      --colorNeutralForeground3: #adadad;
+      --colorNeutralForeground4: #999999;
+      --colorNeutralForegroundDisabled: #5c5c5c;
+      --colorNeutralForegroundOnBrand: #ffffff;
+
+      --colorNeutralStroke1: #666666;
+      --colorNeutralStroke2: #525252;
+      --colorNeutralStroke3: #3d3d3d;
+      --colorNeutralStrokeAccessible: #adadad;
+
+      --colorSubtleBackgroundHover: #383838;
+      --colorSubtleBackgroundPressed: #2e2e2e;
+
+      --colorCompoundBrandBackground: #479ef5;
+      --colorCompoundBrandBackgroundHover: #62abf5;
+      --colorCompoundBrandStroke: #479ef5;
+
+      --shadow2: 0px 1px 2px rgba(0,0,0,0.48), 0px 0px 2px rgba(0,0,0,0.24);
+      --shadow4: 0px 2px 4px rgba(0,0,0,0.48), 0px 0px 2px rgba(0,0,0,0.24);
+      --shadow8: 0px 4px 8px rgba(0,0,0,0.48), 0px 0px 2px rgba(0,0,0,0.24);
+      --shadow16: 0px 8px 16px rgba(0,0,0,0.48), 0px 0px 2px rgba(0,0,0,0.24);
+      --shadow28: 0px 14px 28px rgba(0,0,0,0.48), 0px 0px 8px rgba(0,0,0,0.24);
+      --shadow64: 0px 32px 64px rgba(0,0,0,0.48), 0px 0px 8px rgba(0,0,0,0.24);
+    }
+
+    /* ═══════════════════════════════════════════════
+       RESET & BASE
+       ═══════════════════════════════════════════════ */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--fontFamilyBase);
+      font-size: var(--fontSizeBase300);
+      line-height: var(--lineHeightBase300);
+      color: var(--colorNeutralForeground1);
+      background-color: var(--colorNeutralBackground2);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      transition: background-color var(--durationSlower) var(--curveEasyEase),
+                  color var(--durationSlower) var(--curveEasyEase);
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: var(--colorBrandForegroundLink); text-decoration: none; }
+    a:hover { color: var(--colorBrandForegroundLinkHover); text-decoration: underline; }
+
+    /* ═══════════════════════════════════════════════
+       FLUENT 2 COMPONENT PRIMITIVES
+       ═══════════════════════════════════════════════ */
+
+    /* --- Buttons --- */
+    .fluent-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacingS);
+      padding: 5px 12px;
+      min-height: 32px;
+      font-family: var(--fontFamilyBase);
+      font-size: var(--fontSizeBase300);
+      font-weight: var(--fontWeightSemibold);
+      line-height: var(--lineHeightBase300);
+      border-radius: var(--borderRadiusMedium);
+      border: var(--strokeWidthThin) solid transparent;
+      cursor: pointer;
+      transition: background-color var(--durationFast) var(--curveEasyEase),
+                  border-color var(--durationFast) var(--curveEasyEase),
+                  color var(--durationFast) var(--curveEasyEase),
+                  box-shadow var(--durationFast) var(--curveEasyEase);
+      text-decoration: none;
+    }
+
+    .fluent-btn:active { transform: scale(0.98); }
+
+    .fluent-btn-primary {
+      background-color: var(--colorBrandBackground);
+      color: var(--colorNeutralForegroundOnBrand);
+      border-color: var(--colorBrandBackground);
+    }
+    .fluent-btn-primary:hover {
+      background-color: var(--colorBrandBackgroundHover);
+      border-color: var(--colorBrandBackgroundHover);
+      text-decoration: none;
+      color: var(--colorNeutralForegroundOnBrand);
+    }
+    .fluent-btn-primary:active {
+      background-color: var(--colorBrandBackgroundPressed);
+      border-color: var(--colorBrandBackgroundPressed);
+    }
+
+    .fluent-btn-outline {
+      background-color: transparent;
+      color: var(--colorNeutralForeground1);
+      border-color: var(--colorNeutralStroke1);
+    }
+    .fluent-btn-outline:hover {
+      background-color: var(--colorSubtleBackgroundHover);
+      color: var(--colorNeutralForeground1);
+      text-decoration: none;
+    }
+
+    .fluent-btn-subtle {
+      background-color: var(--colorSubtleBackground);
+      color: var(--colorNeutralForeground2);
+      border-color: transparent;
+    }
+    .fluent-btn-subtle:hover {
+      background-color: var(--colorSubtleBackgroundHover);
+      color: var(--colorNeutralForeground1);
+      text-decoration: none;
+    }
+
+    .fluent-btn-lg {
+      padding: 8px 16px;
+      min-height: 40px;
+      font-size: var(--fontSizeBase300);
+      border-radius: var(--borderRadiusMedium);
+    }
+
+    /* --- Cards (with Fluent Reveal Highlight) --- */
+    .fluent-card {
+      position: relative;
+      background: var(--colorNeutralBackground1);
+      border: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+      border-radius: var(--borderRadiusXLarge);
+      box-shadow: var(--shadow2);
+      padding: var(--spacingXXL);
+      transition: box-shadow var(--durationNormal) var(--curveEasyEase),
+                  border-color var(--durationNormal) var(--curveEasyEase),
+                  background-color var(--durationSlower) var(--curveEasyEase);
+      overflow: hidden;
+    }
+
+    .fluent-card::before {
+      content: '';
+      position: absolute;
+      inset: -1px;
+      border-radius: inherit;
+      background: radial-gradient(
+        circle 250px at var(--reveal-x, 50%) var(--reveal-y, 50%),
+        rgba(0,0,0,0.04),
+        transparent
+      );
+      opacity: 0;
+      transition: opacity var(--durationNormal) var(--curveEasyEase);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    [data-theme="dark"] .fluent-card::before {
+      background: radial-gradient(
+        circle 250px at var(--reveal-x, 50%) var(--reveal-y, 50%),
+        rgba(255,255,255,0.06),
+        transparent
+      );
+    }
+
+    .fluent-card:hover {
+      box-shadow: var(--shadow8);
+      border-color: var(--colorNeutralStroke1);
+    }
+
+    .fluent-card:hover::before { opacity: 1; }
+
+    /* --- Layout --- */
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--spacingXXL);
+    }
+
+    /* ═══════════════════════════════════════════════
+       ANNOUNCEMENT BAR
+       ═══════════════════════════════════════════════ */
+    .announcement {
+      background: var(--colorBrandBackground);
+      color: var(--colorNeutralForegroundOnBrand);
+      padding: var(--spacingS) var(--spacingXXL);
+      text-align: center;
+      font-size: var(--fontSizeBase200);
+      line-height: var(--lineHeightBase200);
+      transition: background-color var(--durationSlower) var(--curveEasyEase);
+    }
+
+    .announcement a {
+      color: inherit;
+      font-weight: var(--fontWeightSemibold);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .announcement a:hover { opacity: 0.85; }
+
+    /* ═══════════════════════════════════════════════
+       NAVBAR — Acrylic Material
+       ═══════════════════════════════════════════════ */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(255,255,255,0.72);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+      border-bottom: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+      transition: background-color var(--durationSlower) var(--curveEasyEase),
+                  border-color var(--durationSlower) var(--curveEasyEase),
+                  box-shadow var(--durationNormal) var(--curveEasyEase);
+    }
+
+    [data-theme="dark"] .navbar {
+      background: rgba(41,41,41,0.72);
+    }
+
+    .navbar.scrolled { box-shadow: var(--shadow4); }
+
+    .navbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--spacingXXL);
+    }
+
+    .navbar-logo {
+      font-size: var(--fontSizeBase400);
+      font-weight: var(--fontWeightSemibold);
+      color: var(--colorNeutralForeground1);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: var(--spacingS);
+    }
+
+    .navbar-logo:hover { text-decoration: none; }
+
+    .navbar-logo svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    .navbar-links {
+      display: flex;
+      align-items: center;
+      gap: var(--spacingXS);
+      list-style: none;
+    }
+
+    .navbar-links a {
+      display: flex;
+      align-items: center;
+      padding: 6px 10px;
+      font-size: var(--fontSizeBase300);
+      font-weight: var(--fontWeightRegular);
+      color: var(--colorNeutralForeground2);
+      border-radius: var(--borderRadiusMedium);
+      transition: background-color var(--durationFaster) var(--curveEasyEase),
+                  color var(--durationFaster) var(--curveEasyEase);
+      text-decoration: none;
+    }
+
+    .navbar-links a:hover {
+      background-color: var(--colorSubtleBackgroundHover);
+      color: var(--colorNeutralForeground1);
+      text-decoration: none;
+    }
+
+    .navbar-right {
+      display: flex;
+      align-items: center;
+      gap: var(--spacingM);
+    }
+
+    .theme-toggle {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--borderRadiusMedium);
+      border: none;
+      background: var(--colorSubtleBackground);
+      color: var(--colorNeutralForeground2);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      transition: background-color var(--durationFaster) var(--curveEasyEase);
+    }
+
+    .theme-toggle:hover {
+      background: var(--colorSubtleBackgroundHover);
+    }
+
+    .theme-toggle .icon-moon { display: none; }
+    [data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+    [data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+
+    .mobile-toggle {
+      display: none;
+      width: 32px;
+      height: 32px;
+      border: none;
+      background: transparent;
+      cursor: pointer;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .mobile-toggle span {
+      width: 18px;
+      height: 2px;
+      background: var(--colorNeutralForeground2);
+      border-radius: 1px;
+      transition: transform var(--durationFast) var(--curveEasyEase),
+                  opacity var(--durationFast) var(--curveEasyEase);
+    }
+
+    /* ═══════════════════════════════════════════════
+       HERO — Mica-inspired background
+       ═══════════════════════════════════════════════ */
+    .hero {
+      padding: 100px 0 80px;
+      background:
+        radial-gradient(ellipse at 65% 10%, rgba(15,108,189,0.07), transparent 50%),
+        radial-gradient(ellipse at 25% 90%, rgba(15,108,189,0.04), transparent 45%),
+        var(--colorNeutralBackground2);
+      transition: background-color var(--durationSlower) var(--curveEasyEase);
+      overflow: hidden;
+      position: relative;
+    }
+
+    [data-theme="dark"] .hero {
+      background:
+        radial-gradient(ellipse at 65% 10%, rgba(71,158,245,0.08), transparent 50%),
+        radial-gradient(ellipse at 25% 90%, rgba(71,158,245,0.04), transparent 45%),
+        var(--colorNeutralBackground2);
+    }
+
+    .hero-inner {
+      display: flex;
+      align-items: center;
+      gap: 64px;
+    }
+
+    .hero-content {
+      flex: 1 1 55%;
+      max-width: 600px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacingS);
+      padding: 4px 12px 4px 4px;
+      border-radius: var(--borderRadiusCircular);
+      background: var(--colorBrandBackground2);
+      font-size: var(--fontSizeBase200);
+      font-weight: var(--fontWeightMedium);
+      color: var(--colorBrandForeground1);
+      margin-bottom: var(--spacingXXL);
+      border: var(--strokeWidthThin) solid transparent;
+      transition: background-color var(--durationSlower) var(--curveEasyEase);
+    }
+
+    .hero-badge-dot {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--colorBrandBackground);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 10px;
+    }
+
+    .hero h1 {
+      font-size: clamp(var(--fontSizeHero800), 5vw, var(--fontSizeHero1000));
+      font-weight: var(--fontWeightSemibold);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      color: var(--colorNeutralForeground1);
+      margin-bottom: var(--spacingL);
+    }
+
+    .hero h1 .brand-text {
+      color: var(--colorBrandForeground1);
+    }
+
+    .hero-description {
+      font-size: var(--fontSizeBase400);
+      line-height: var(--lineHeightBase400);
+      color: var(--colorNeutralForeground2);
+      margin-bottom: var(--spacingXXXL);
+      max-width: 500px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: var(--spacingM);
+      flex-wrap: wrap;
+    }
+
+    .hero-visual {
+      flex: 1 1 40%;
+      position: relative;
+      min-height: 340px;
+    }
+
+    /* Floating Fluent surfaces */
+    .hero-surface {
+      position: absolute;
+      background: var(--colorNeutralBackground1);
+      border: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+      border-radius: var(--borderRadiusXLarge);
+      transition: background-color var(--durationSlower) var(--curveEasyEase),
+                  border-color var(--durationSlower) var(--curveEasyEase),
+                  box-shadow var(--durationSlower) var(--curveEasyEase);
+    }
+
+    .hero-surface-1 {
+      width: 280px; height: 180px;
+      top: 20px; left: 0;
+      box-shadow: var(--shadow8);
+      animation: heroFloat1 6s var(--curveEasyEase) infinite;
+    }
+
+    .hero-surface-2 {
+      width: 220px; height: 140px;
+      top: 80px; left: 180px;
+      box-shadow: var(--shadow16);
+      animation: heroFloat2 7s var(--curveEasyEase) infinite;
+      z-index: 1;
+    }
+
+    .hero-surface-3 {
+      width: 200px; height: 120px;
+      top: 180px; left: 40px;
+      box-shadow: var(--shadow4);
+      animation: heroFloat3 8s var(--curveEasyEase) infinite;
+    }
+
+    /* Mini UI elements inside hero surfaces */
+    .surface-bar {
+      height: 6px;
+      border-radius: 3px;
+      background: var(--colorNeutralBackground4);
+      margin-bottom: 8px;
+    }
+
+    .surface-bar.brand {
+      background: var(--colorBrandBackground);
+      width: 60%;
+    }
+
+    .surface-bar.short { width: 40%; }
+    .surface-bar.med { width: 70%; }
+    .surface-bar.long { width: 90%; }
+
+    .surface-dots {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .surface-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--colorNeutralBackground5);
+    }
+
+    .surface-dot.active { background: var(--colorBrandBackground); }
+
+    .surface-content {
+      padding: 16px;
+    }
+
+    .surface-row {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .surface-chip {
+      height: 24px;
+      border-radius: var(--borderRadiusMedium);
+      background: var(--colorNeutralBackground4);
+      flex: 1;
+    }
+
+    .surface-chip.brand {
+      background: var(--colorBrandBackground2);
+    }
+
+    @keyframes heroFloat1 {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes heroFloat2 {
+      0%, 100% { transform: translateY(0) rotate(0.5deg); }
+      50% { transform: translateY(-14px) rotate(-0.5deg); }
+    }
+
+    @keyframes heroFloat3 {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    /* ═══════════════════════════════════════════════
+       SOCIAL PROOF
+       ═══════════════════════════════════════════════ */
+    .social-proof {
+      padding: 56px 0;
+      text-align: center;
+      background: var(--colorNeutralBackground2);
+      transition: background-color var(--durationSlower) var(--curveEasyEase);
+    }
+
+    .social-proof-label {
+      font-size: var(--fontSizeBase200);
+      font-weight: var(--fontWeightMedium);
+      color: var(--colorNeutralForeground4);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: var(--spacingXL);
+    }
+
+    .social-proof-logos {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+
+    .social-proof-logos span {
+      font-size: var(--fontSizeBase400);
+      font-weight: var(--fontWeightSemibold);
+      color: var(--colorNeutralForeground4);
+      letter-spacing: 0.02em;
+    }
+
+    /* ═══════════════════════════════════════════════
+       FEATURES
+       ═══════════════════════════════════════════════ */
+    .features {
+      padding: 80px 0;
+      background: var(--colorNeutralBackground1);
+      transition: background-color var(--durationSlower) var(--curveEasyEase);
+    }
+
+    .section-overline {
+      font-size: var(--fontSizeBase200);
+      font-weight: var(--fontWeightSemibold);
+      color: var(--colorBrandForeground1);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: var(--spacingS);
+    }
+
+    .section-title {
+      font-size: clamp(var(--fontSizeBase600), 3vw, var(--fontSizeHero700));
+      font-weight: var(--fontWeightSemibold);
+      line-height: var(--lineHeightHero700);
+      color: var(--colorNeutralForeground1);
+      margin-bottom: var(--spacingS);
+    }
+
+    .section-description {
+      font-size: var(--fontSizeBase400);
+      line-height: var(--lineHeightBase400);
+      color: var(--colorNeutralForeground3);
+      margin-bottom: 48px;
+      max-width: 560px;
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacingL);
+    }
+
+    .feature-card {
+      padding: var(--spacingXXL);
+    }
+
+    .feature-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: var(--borderRadiusLarge);
+      background: var(--colorBrandBackground2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: var(--spacingL);
+      color: var(--colorBrandForeground1);
+      font-size: 18px;
+      transition: background-color var(--durationSlower) var(--curveEasyEase);
+    }
+
+    .feature-card h3 {
+      font-size: var(--fontSizeBase400);
+      font-weight: var(--fontWeightSemibold);
+      line-height: var(--lineHeightBase400);
+      margin-bottom: var(--spacingS);
+    }
+
+    .feature-card p {
+      font-size: var(--fontSizeBase300);
+      line-height: var(--lineHeightBase300);
+      color: var(--colorNeutralForeground3);
+    }
+
+    /* ═══════════════════════════════════════════════
+       DASHBOARD PREVIEW — Fluent UI App Mockup
+       ═══════════════════════════════════════════════ */
+    .dashboard-section {
+      padding: 80px 0;
+      background: var(--colorNeutralBackground2);
+      transition: background-color var(--durationSlower) var(--curveEasyEase);
+    }
+
+    .dashboard-frame {
+      background: var(--colorNeutralBackground1);
+      border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+      border-radius: var(--borderRadiusXLarge);
+      box-shadow: var(--shadow28);
+      overflow: hidden;
+      max-width: 960px;
+      margin: 0 auto;
+      transition: background-color var(--durationSlower) var(--curveEasyEase),
+                  border-color var(--durationSlower) var(--curveEasyEase),
+                  box-shadow var(--durationSlower) var(--curveEasyEase);
+    }
+
+    .dashboard-titlebar {
+      display: flex;
+      align-items: center;
+      gap: var(--spacingS);
+      padding: 10px 16px;
+      background: var(--colorNeutralBackground3);
+      border-bottom: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+      transition: background-color var(--durationSlower) var(--curveEasyEase);
+    }
+
+    .titlebar-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .titlebar-dots span {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--colorNeutralStroke1);
+    }
+
+    .titlebar-search {
+      flex: 1;
+      max-width: 320px;
+      margin: 0 auto;
+      height: 26px;
+      background: var(--colorNeutralBackground1);
+      border: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+      border-radius: var(--borderRadiusMedium);
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      font-size: var(--fontSizeBase200);
+      color: var(--colorNeutralForeground4);
+      transition: background-color var(--durationSlower) var(--curveEasyEase);
+    }
+
+    .dashboard-body {
+      display: flex;
+      min-height: 320px;
+    }
+
+    .dashboard-nav-rail {
+      width: 48px;
+      background: var(--colorNeutralBackground3);
+      border-right: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+      padding: 12px 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      transition: background-color var(--durationSlower) var(--curveEasyEase);
+    }
+
+    .nav-rail-item {
+      width: 32px;
+      height: 32px;
+      border-radius: var(--borderRadiusMedium);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      color: var(--colorNeutralForeground3);
+      transition: background-color var(--durationFaster) var(--curveEasyEase);
+    }
+
+    .nav-rail-item.active {
+      background: var(--colorBrandBackground2);
+      color: var(--colorBrandForeground1);
+    }
+
+    .dashboard-main {
+      flex: 1;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto 1fr;
+      gap: 12px;
+    }
+
+    .dash-card {
+      background: var(--colorNeutralBackground1);
+      border: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+      border-radius: var(--borderRadiusLarge);
+      padding: 16px;
+      transition: background-color var(--durationSlower) var(--curveEasyEase),
+                  border-color var(--durationSlower) var(--curveEasyEase);
+    }
+
+    .dash-card-label {
+      font-size: var(--fontSizeBase200);
+      color: var(--colorNeutralForeground3);
+      margin-bottom: 8px;
+      font-weight: var(--fontWeightMedium);
+    }
+
+    .dash-card-value {
+      font-size: var(--fontSizeBase600);
+      font-weight: var(--fontWeightSemibold);
+      color: var(--colorNeutralForeground1);
+      margin-bottom: 4px;
+    }
+
+    .dash-card-change {
+      font-size: var(--fontSizeBase100);
+      color: var(--colorStatusSuccessForeground1);
+      font-weight: var(--fontWeightMedium);
+    }
+
+    .dash-chart {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      padding-top: 12px;
+    }
+
+    .chart-bar {
+      flex: 1;
+      border-radius: var(--borderRadiusSmall) var(--borderRadiusSmall) 0 0;
+      background: var(--colorBrandBackground2);
+      transition: height var(--durationSlow) var(--curveDecelerateMid),
+                  background-color var(--durationSlower) var(--curveEasyEase);
+      min-height: 8px;
+    }
+
+    .chart-bar.active { background: var(--colorBrandBackground); }
+
+    /* ═══════════════════════════════════════════════
+       METRICS
+       ═══════════════════════════════════════════════ */
+    .metrics {
+      padding: 80px 0;
+      background: var(--colorNeutralBackground1);
+      transition: background-color var(--durationSlower) var(--curveEasyEase);
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--spacingL);
+    }
+
+    .metric-card {
+      text-align: center;
+      padding: var(--spacingXXXL) var(--spacingXXL);
+    }
+
+    .metric-number {
+      font-size: clamp(var(--fontSizeHero700), 3vw, var(--fontSizeHero900));
+      font-weight: var(--fontWeightSemibold);
+      line-height: 1.2;
+      color: var(--colorBrandForeground1);
+      margin-bottom: var(--spacingS);
+    }
+
+    .metric-label {
+      font-size: var(--fontSizeBase300);
+      color: var(--colorNeutralForeground3);
+    }
+
+    /* ═══════════════════════════════════════════════
+       TESTIMONIALS
+       ═══════════════════════════════════════════════ */
+    .testimonials {
+      padding: 80px 0;
+      background: var(--colorNeutralBackground2);
+      transition: background-color var(--durationSlower) var(--curveEasyEase);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacingL);
+      margin-top: 48px;
+    }
+
+    .testimonial-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .testimonial-quote {
+      font-size: var(--fontSizeBase300);
+      line-height: 1.65;
+      color: var(--colorNeutralForeground2);
+      margin-bottom: var(--spacingXL);
+      flex: 1;
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-quote::before {
+      content: '\201C';
+      font-size: 48px;
+      line-height: 1;
+      color: var(--colorBrandForeground1);
+      opacity: 0.3;
+      display: block;
+      margin-bottom: var(--spacingS);
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: var(--spacingM);
+      position: relative;
+      z-index: 1;
+    }
+
+    .testimonial-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: var(--borderRadiusCircular);
+      background: var(--colorBrandBackground);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: var(--fontSizeBase200);
+      font-weight: var(--fontWeightSemibold);
+      flex-shrink: 0;
+    }
+
+    .testimonial-name {
+      font-size: var(--fontSizeBase300);
+      font-weight: var(--fontWeightSemibold);
+      color: var(--colorNeutralForeground1);
+    }
+
+    .testimonial-title {
+      font-size: var(--fontSizeBase200);
+      color: var(--colorNeutralForeground4);
+    }
+
+    /* ═══════════════════════════════════════════════
+       PRICING
+       ═══════════════════════════════════════════════ */
+    .pricing {
+      padding: 80px 0;
+      background: var(--colorNeutralBackground1);
+      transition: background-color var(--durationSlower) var(--curveEasyEase);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacingL);
+      margin-top: 48px;
+      align-items: start;
+    }
+
+    .pricing-card { display: flex; flex-direction: column; }
+
+    .pricing-card.featured {
+      border-color: var(--colorBrandStroke1);
+      position: relative;
+    }
+
+    .pricing-card.featured .pricing-badge {
+      position: absolute;
+      top: -1px;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+      background: var(--colorBrandBackground);
+      color: var(--colorNeutralForegroundOnBrand);
+      font-size: var(--fontSizeBase100);
+      font-weight: var(--fontWeightSemibold);
+      padding: 2px 12px;
+      border-radius: var(--borderRadiusCircular);
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .pricing-plan {
+      font-size: var(--fontSizeBase300);
+      font-weight: var(--fontWeightSemibold);
+      color: var(--colorNeutralForeground2);
+      margin-bottom: var(--spacingS);
+    }
+
+    .pricing-price {
+      font-size: var(--fontSizeHero800);
+      font-weight: var(--fontWeightSemibold);
+      color: var(--colorNeutralForeground1);
+      line-height: var(--lineHeightHero800);
+      margin-bottom: 4px;
+    }
+
+    .pricing-price span {
+      font-size: var(--fontSizeBase300);
+      font-weight: var(--fontWeightRegular);
+      color: var(--colorNeutralForeground3);
+    }
+
+    .pricing-desc {
+      font-size: var(--fontSizeBase200);
+      color: var(--colorNeutralForeground4);
+      margin-bottom: var(--spacingXL);
+      padding-bottom: var(--spacingXL);
+      border-bottom: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin-bottom: var(--spacingXXL);
+      flex: 1;
+    }
+
+    .pricing-features li {
+      font-size: var(--fontSizeBase300);
+      color: var(--colorNeutralForeground2);
+      padding: 6px 0;
+      display: flex;
+      align-items: center;
+      gap: var(--spacingS);
+    }
+
+    .pricing-features li::before {
+      content: '';
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--colorStatusSuccessBackground1);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid rgba(14,112,14,0.15);
+    }
+
+    .pricing-card .fluent-btn { width: 100%; }
+
+    /* ═══════════════════════════════════════════════
+       FAQ
+       ═══════════════════════════════════════════════ */
+    .faq {
+      padding: 80px 0;
+      background: var(--colorNeutralBackground2);
+      transition: background-color var(--durationSlower) var(--curveEasyEase);
+    }
+
+    .faq-list {
+      max-width: 720px;
+      margin: 48px auto 0;
+    }
+
+    .faq-item {
+      border-bottom: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+      transition: border-color var(--durationSlower) var(--curveEasyEase);
+    }
+
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: var(--spacingL) 0;
+      font-family: var(--fontFamilyBase);
+      font-size: var(--fontSizeBase400);
+      font-weight: var(--fontWeightSemibold);
+      color: var(--colorNeutralForeground1);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      text-align: left;
+      line-height: var(--lineHeightBase400);
+    }
+
+    .faq-question:hover { color: var(--colorBrandForeground1); }
+
+    .faq-chevron {
+      width: 20px;
+      height: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      color: var(--colorNeutralForeground3);
+      transition: transform var(--durationNormal) var(--curveDecelerateMid);
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-chevron { transform: rotate(180deg); }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height var(--durationSlow) var(--curveDecelerateMid),
+                  padding var(--durationSlow) var(--curveDecelerateMid);
+    }
+
+    .faq-item.open .faq-answer { max-height: 200px; }
+
+    .faq-answer p {
+      padding-bottom: var(--spacingL);
+      font-size: var(--fontSizeBase300);
+      line-height: 1.65;
+      color: var(--colorNeutralForeground3);
+    }
+
+    /* ═══════════════════════════════════════════════
+       CTA
+       ═══════════════════════════════════════════════ */
+    .cta-section {
+      padding: 100px 0;
+      background: var(--colorBrandBackground);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: background-color var(--durationSlower) var(--curveEasyEase);
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 50%, rgba(255,255,255,0.08), transparent 50%),
+        radial-gradient(ellipse at 70% 30%, rgba(255,255,255,0.05), transparent 40%);
+      pointer-events: none;
+    }
+
+    .cta-section h2 {
+      font-size: clamp(var(--fontSizeBase600), 3.5vw, var(--fontSizeHero900));
+      font-weight: var(--fontWeightSemibold);
+      color: var(--colorNeutralForegroundOnBrand);
+      margin-bottom: var(--spacingL);
+      position: relative;
+    }
+
+    .cta-section p {
+      font-size: var(--fontSizeBase400);
+      color: rgba(255,255,255,0.8);
+      margin-bottom: var(--spacingXXXL);
+      position: relative;
+    }
+
+    .cta-section .fluent-btn {
+      background: white;
+      color: var(--colorBrandBackground);
+      border-color: white;
+      font-size: var(--fontSizeBase300);
+      padding: 10px 24px;
+      min-height: 40px;
+      position: relative;
+    }
+
+    .cta-section .fluent-btn:hover {
+      background: rgba(255,255,255,0.9);
+      border-color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      color: var(--colorBrandBackgroundHover);
+    }
+
+    /* ═══════════════════════════════════════════════
+       FOOTER
+       ═══════════════════════════════════════════════ */
+    .site-footer {
+      padding: 48px 0 32px;
+      background: var(--colorNeutralBackground1);
+      border-top: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+      transition: background-color var(--durationSlower) var(--curveEasyEase),
+                  border-color var(--durationSlower) var(--curveEasyEase);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.5fr repeat(4, 1fr);
+      gap: var(--spacingXXXL);
+      margin-bottom: 48px;
+    }
+
+    .footer-brand {
+      font-size: var(--fontSizeBase400);
+      font-weight: var(--fontWeightSemibold);
+      color: var(--colorNeutralForeground1);
+      margin-bottom: var(--spacingM);
+    }
+
+    .footer-brand-desc {
+      font-size: var(--fontSizeBase200);
+      color: var(--colorNeutralForeground4);
+      line-height: 1.5;
+    }
+
+    .footer-col h4 {
+      font-size: var(--fontSizeBase200);
+      font-weight: var(--fontWeightSemibold);
+      color: var(--colorNeutralForeground3);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: var(--spacingM);
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: var(--spacingS);
+    }
+
+    .footer-col a {
+      font-size: var(--fontSizeBase200);
+      color: var(--colorNeutralForeground3);
+      text-decoration: none;
+      transition: color var(--durationFaster) var(--curveEasyEase);
+    }
+
+    .footer-col a:hover {
+      color: var(--colorNeutralForeground1);
+      text-decoration: none;
+    }
+
+    .footer-bottom {
+      padding-top: var(--spacingXXL);
+      border-top: var(--strokeWidthThin) solid var(--colorNeutralStroke3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: border-color var(--durationSlower) var(--curveEasyEase);
+    }
+
+    .footer-copy {
+      font-size: var(--fontSizeBase100);
+      color: var(--colorNeutralForeground4);
+    }
+
+    .footer-legal {
+      display: flex;
+      gap: var(--spacingL);
+    }
+
+    .footer-legal a {
+      font-size: var(--fontSizeBase100);
+      color: var(--colorNeutralForeground4);
+    }
+
+    /* ═══════════════════════════════════════════════
+       SCROLL REVEAL
+       ═══════════════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity var(--durationSlower) var(--curveDecelerateMid),
+                  transform var(--durationSlower) var(--curveDecelerateMid);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ═══════════════════════════════════════════════
+       PAGE SWITCHER
+       ═══════════════════════════════════════════════ */
+    #ps{position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;gap:6px;padding:8px 12px;border-radius:100px;background:rgba(0,0,0,0.82);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);box-shadow:0 8px 32px rgba(0,0,0,0.24);font-family:system-ui,-apple-system,sans-serif}
+    #ps a{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:14px;font-weight:600;color:rgba(255,255,255,0.7);background:rgba(255,255,255,0.08);transition:all 0.2s ease}
+    #ps a:hover{background:rgba(255,255,255,0.2);color:#fff}
+    #ps a.active{background:rgba(255,255,255,0.95);color:#111}
+
+    /* ═══════════════════════════════════════════════
+       RESPONSIVE
+       ═══════════════════════════════════════════════ */
+    @media (max-width: 1024px) {
+      .hero-inner { flex-direction: column; gap: 48px; text-align: center; }
+      .hero-content { max-width: 100%; }
+      .hero-description { max-width: 100%; margin-left: auto; margin-right: auto; }
+      .hero-actions { justify-content: center; }
+      .hero-visual { min-height: 240px; width: 100%; max-width: 460px; margin: 0 auto; }
+      .features-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+      .testimonials-grid .fluent-card:last-child { grid-column: 1 / -1; max-width: 400px; margin: 0 auto; }
+      .footer-grid { grid-template-columns: repeat(3, 1fr); }
+      .footer-grid > div:first-child { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 768px) {
+      .hero { padding: 72px 0 56px; }
+      .features, .dashboard-section, .metrics, .testimonials, .pricing, .faq { padding: 56px 0; }
+      .features-grid { grid-template-columns: 1fr; }
+      .metrics-grid { grid-template-columns: repeat(2, 1fr); }
+      .pricing-grid { grid-template-columns: 1fr; max-width: 400px; margin-left: auto; margin-right: auto; }
+      .testimonials-grid { grid-template-columns: 1fr; }
+      .testimonials-grid .fluent-card:last-child { max-width: 100%; }
+      .navbar-links { display: none; }
+      .mobile-toggle { display: flex; }
+
+      .navbar-links.open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 48px;
+        left: 0;
+        right: 0;
+        background: var(--colorNeutralBackground1);
+        border-bottom: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+        padding: var(--spacingS) var(--spacingXXL);
+        box-shadow: var(--shadow8);
+      }
+
+      .footer-grid { grid-template-columns: repeat(2, 1fr); }
+      .dashboard-body { flex-direction: column; }
+      .dashboard-nav-rail { flex-direction: row; width: 100%; border-right: none; border-bottom: var(--strokeWidthThin) solid var(--colorNeutralStroke2); padding: 8px 12px; }
+      .dashboard-main { grid-template-columns: 1fr; }
+      .hero-surface-2 { left: 120px; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 var(--spacingL); }
+      .hero h1 { font-size: var(--fontSizeHero700); }
+      .hero-visual { min-height: 200px; }
+      .hero-surface-1 { width: 200px; height: 130px; }
+      .hero-surface-2 { width: 170px; height: 110px; left: 100px; }
+      .hero-surface-3 { width: 160px; height: 100px; }
+      .metrics-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: var(--spacingM); text-align: center; }
+      .footer-legal { flex-wrap: wrap; justify-content: center; }
+      .social-proof-logos { gap: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ═══ ANNOUNCEMENT BAR ═══ -->
+  <div class="announcement">
+    New: Flowstate 3.0 — AI-powered task routing is here.
+    <a href="#features">Learn what's new &rarr;</a>
+  </div>
+
+  <!-- ═══ NAVBAR (Acrylic) ═══ -->
+  <nav class="navbar" id="navbar">
+    <div class="navbar-inner">
+      <a href="#" class="navbar-logo">
+        <svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="2" width="7" height="7" rx="1.5" fill="var(--colorBrandBackground)"/>
+          <rect x="11" y="2" width="7" height="7" rx="1.5" fill="var(--colorBrandBackground)" opacity="0.6"/>
+          <rect x="2" y="11" width="7" height="7" rx="1.5" fill="var(--colorBrandBackground)" opacity="0.6"/>
+          <rect x="11" y="11" width="7" height="7" rx="1.5" fill="var(--colorBrandBackground)" opacity="0.35"/>
+        </svg>
+        Flowstate
+      </a>
+
+      <ul class="navbar-links" id="navLinks">
+        <li><a href="#features">Product</a></li>
+        <li><a href="#dashboard">Solutions</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">Resources</a></li>
+      </ul>
+
+      <div class="navbar-right">
+        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+          <span class="icon-sun">&#9788;</span>
+          <span class="icon-moon">&#9790;</span>
+        </button>
+        <a href="#cta" class="fluent-btn fluent-btn-primary">Get started</a>
+        <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+
+    <!-- ═══ HERO ═══ -->
+    <section class="hero">
+      <div class="container hero-inner">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="hero-badge-dot">&#10003;</span>
+            Version 3.0 released
+          </div>
+          <h1>Automate workflows.<br><span class="brand-text">Accelerate outcomes.</span></h1>
+          <p class="hero-description">Flowstate brings AI-powered workflow automation to your team. Design, route, and optimize complex processes — all from one intelligent platform.</p>
+          <div class="hero-actions">
+            <a href="#cta" class="fluent-btn fluent-btn-primary fluent-btn-lg">Start free trial</a>
+            <a href="#dashboard" class="fluent-btn fluent-btn-outline fluent-btn-lg">See it in action</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="hero-surface hero-surface-1">
+            <div class="surface-content">
+              <div class="surface-dots">
+                <span class="surface-dot active"></span>
+                <span class="surface-dot"></span>
+                <span class="surface-dot"></span>
+              </div>
+              <div class="surface-bar brand"></div>
+              <div class="surface-bar long"></div>
+              <div class="surface-bar med"></div>
+              <div class="surface-bar short"></div>
+              <div class="surface-row">
+                <div class="surface-chip brand"></div>
+                <div class="surface-chip"></div>
+              </div>
+            </div>
+          </div>
+          <div class="hero-surface hero-surface-2">
+            <div class="surface-content">
+              <div class="surface-bar short"></div>
+              <div class="surface-row">
+                <div class="surface-chip"></div>
+                <div class="surface-chip"></div>
+                <div class="surface-chip"></div>
+              </div>
+              <div class="surface-bar long"></div>
+              <div class="surface-bar med"></div>
+            </div>
+          </div>
+          <div class="hero-surface hero-surface-3">
+            <div class="surface-content">
+              <div class="surface-dots">
+                <span class="surface-dot"></span>
+                <span class="surface-dot active"></span>
+                <span class="surface-dot"></span>
+              </div>
+              <div class="surface-bar med"></div>
+              <div class="surface-bar short"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ SOCIAL PROOF ═══ -->
+    <section class="social-proof">
+      <div class="container">
+        <p class="social-proof-label">Trusted by 10,000+ teams worldwide</p>
+        <div class="social-proof-logos">
+          <span>Stripe</span>
+          <span>Vercel</span>
+          <span>Linear</span>
+          <span>Notion</span>
+          <span>Figma</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FEATURES ═══ -->
+    <section class="features reveal" id="features">
+      <div class="container">
+        <p class="section-overline">Capabilities</p>
+        <h2 class="section-title">Built for modern teams</h2>
+        <p class="section-description">Every feature designed with care — powerful enough for enterprise scale, simple enough to start in minutes.</p>
+        <div class="features-grid">
+          <div class="fluent-card feature-card reveal-card">
+            <div class="feature-icon">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M3 3h6v6H3V3zm8 0h6v6h-6V3zm-8 8h6v6H3v-6zm8 0h6v6h-6v-6z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>Visual Workflow Builder</h3>
+            <p>Design complex automations with an intuitive drag-and-drop canvas. Connect nodes, set conditions, and deploy — no code required.</p>
+          </div>
+          <div class="fluent-card feature-card reveal-card">
+            <div class="feature-icon">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1.5"/><path d="M10 6v4l3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </div>
+            <h3>AI Task Routing</h3>
+            <p>Intelligently assigns work based on team capacity, expertise, and priority. The right task finds the right person, automatically.</p>
+          </div>
+          <div class="fluent-card feature-card reveal-card">
+            <div class="feature-icon">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M7 10a3 3 0 106 0 3 3 0 00-6 0zM2 10a3 3 0 106 0 3 3 0 00-6 0zm10 0a3 3 0 106 0 3 3 0 00-6 0z" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <h3>Real-time Collaboration</h3>
+            <p>Work together seamlessly across time zones. See changes as they happen, leave comments, and resolve blockers instantly.</p>
+          </div>
+          <div class="fluent-card feature-card reveal-card">
+            <div class="feature-icon">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><rect x="3" y="8" width="3" height="9" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="8.5" y="5" width="3" height="12" rx="1" stroke="currentColor" stroke-width="1.5"/><rect x="14" y="3" width="3" height="14" rx="1" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <h3>Analytics Dashboard</h3>
+            <p>Track pipeline performance with live dashboards. Spot bottlenecks, measure throughput, and make data-driven decisions.</p>
+          </div>
+          <div class="fluent-card feature-card reveal-card">
+            <div class="feature-icon">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M10 2v4m0 8v4M2 10h4m8 0h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5"/></svg>
+            </div>
+            <h3>200+ Integrations</h3>
+            <p>Connect every tool your team already uses — Slack, GitHub, Jira, Notion, and more. Unified in one automation canvas.</p>
+          </div>
+          <div class="fluent-card feature-card reveal-card">
+            <div class="feature-icon">
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M4 7l4-4 4 4m-4-4v12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M16 13l-4 4-4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </div>
+            <h3>API-First Architecture</h3>
+            <p>Build custom integrations in minutes with our REST and GraphQL APIs. Full documentation, SDKs, and webhook support.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ DASHBOARD PREVIEW ═══ -->
+    <section class="dashboard-section reveal" id="dashboard">
+      <div class="container" style="text-align:center;">
+        <p class="section-overline">Product</p>
+        <h2 class="section-title" style="max-width:500px;margin-left:auto;margin-right:auto;">Your workflows, visualized</h2>
+        <p class="section-description" style="margin-left:auto;margin-right:auto;">A unified command center for every process, pipeline, and automation running across your organization.</p>
+      </div>
+      <div class="container">
+        <div class="dashboard-frame">
+          <div class="dashboard-titlebar">
+            <div class="titlebar-dots"><span></span><span></span><span></span></div>
+            <div class="titlebar-search">&#x2315; Search workflows...</div>
+            <div style="width:24px;height:24px;border-radius:50%;background:var(--colorBrandBackground);flex-shrink:0;"></div>
+          </div>
+          <div class="dashboard-body">
+            <div class="dashboard-nav-rail">
+              <div class="nav-rail-item active">&#9632;</div>
+              <div class="nav-rail-item">&#9650;</div>
+              <div class="nav-rail-item">&#9679;</div>
+              <div class="nav-rail-item">&#9670;</div>
+            </div>
+            <div class="dashboard-main">
+              <div class="dash-card">
+                <div class="dash-card-label">Active workflows</div>
+                <div class="dash-card-value">1,284</div>
+                <div class="dash-card-change">&#9650; 12% this week</div>
+              </div>
+              <div class="dash-card">
+                <div class="dash-card-label">Tasks routed today</div>
+                <div class="dash-card-value">3,847</div>
+                <div class="dash-card-change">&#9650; 8% vs yesterday</div>
+              </div>
+              <div class="dash-card" style="grid-column:1/-1;">
+                <div class="dash-card-label">Workflow executions (7 days)</div>
+                <div class="dash-chart">
+                  <div class="chart-bar" style="height:45px;"></div>
+                  <div class="chart-bar" style="height:62px;"></div>
+                  <div class="chart-bar" style="height:38px;"></div>
+                  <div class="chart-bar" style="height:75px;"></div>
+                  <div class="chart-bar active" style="height:90px;"></div>
+                  <div class="chart-bar active" style="height:105px;"></div>
+                  <div class="chart-bar active" style="height:82px;"></div>
+                  <div class="chart-bar" style="height:70px;"></div>
+                  <div class="chart-bar" style="height:55px;"></div>
+                  <div class="chart-bar" style="height:95px;"></div>
+                  <div class="chart-bar active" style="height:110px;"></div>
+                  <div class="chart-bar" style="height:68px;"></div>
+                  <div class="chart-bar" style="height:48px;"></div>
+                  <div class="chart-bar active" style="height:88px;"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ METRICS ═══ -->
+    <section class="metrics reveal">
+      <div class="container">
+        <div class="metrics-grid">
+          <div class="fluent-card metric-card">
+            <div class="metric-number">10,847</div>
+            <div class="metric-label">Active teams</div>
+          </div>
+          <div class="fluent-card metric-card">
+            <div class="metric-number">52.4M</div>
+            <div class="metric-label">Workflows automated</div>
+          </div>
+          <div class="fluent-card metric-card">
+            <div class="metric-number">99.97%</div>
+            <div class="metric-label">Uptime SLA</div>
+          </div>
+          <div class="fluent-card metric-card">
+            <div class="metric-number">&lt;94ms</div>
+            <div class="metric-label">Avg response time</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ TESTIMONIALS ═══ -->
+    <section class="testimonials reveal">
+      <div class="container">
+        <p class="section-overline" style="text-align:center;">Testimonials</p>
+        <h2 class="section-title" style="text-align:center;">Trusted by engineering leaders</h2>
+        <div class="testimonials-grid">
+          <div class="fluent-card testimonial-card reveal-card">
+            <div class="testimonial-quote">Flowstate transformed how our engineering team handles deployments. We ship 3x faster and with far fewer incidents.</div>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">SC</div>
+              <div>
+                <div class="testimonial-name">Sarah Chen</div>
+                <div class="testimonial-title">VP Engineering, TechCorp</div>
+              </div>
+            </div>
+          </div>
+          <div class="fluent-card testimonial-card reveal-card">
+            <div class="testimonial-quote">The AI routing alone saved us 20 hours per week per team. It understands context in a way other tools simply don't.</div>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">MR</div>
+              <div>
+                <div class="testimonial-name">Marcus Rivera</div>
+                <div class="testimonial-title">Head of Operations, ScaleUp</div>
+              </div>
+            </div>
+          </div>
+          <div class="fluent-card testimonial-card reveal-card">
+            <div class="testimonial-quote">Finally, workflow automation that doesn't feel like a chore. Our team adopted it in days, not months. It just works.</div>
+            <div class="testimonial-author">
+              <div class="testimonial-avatar">PS</div>
+              <div>
+                <div class="testimonial-name">Priya Sharma</div>
+                <div class="testimonial-title">CTO, BuildFast</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ PRICING ═══ -->
+    <section class="pricing reveal" id="pricing">
+      <div class="container">
+        <p class="section-overline" style="text-align:center;">Pricing</p>
+        <h2 class="section-title" style="text-align:center;">Simple, transparent pricing</h2>
+        <p class="section-description" style="text-align:center;margin-left:auto;margin-right:auto;">Start free. Scale as you grow. No hidden fees, no surprises.</p>
+        <div class="pricing-grid">
+          <div class="fluent-card pricing-card">
+            <div class="pricing-plan">Starter</div>
+            <div class="pricing-price">$29 <span>/month</span></div>
+            <div class="pricing-desc">For small teams getting started with automation.</div>
+            <ul class="pricing-features">
+              <li>5 team members</li>
+              <li>1,000 workflows / month</li>
+              <li>Core integrations</li>
+              <li>Email support</li>
+              <li>Community access</li>
+            </ul>
+            <a href="#cta" class="fluent-btn fluent-btn-outline" style="width:100%;">Get started</a>
+          </div>
+          <div class="fluent-card pricing-card featured">
+            <div class="pricing-badge">Recommended</div>
+            <div class="pricing-plan">Professional</div>
+            <div class="pricing-price">$79 <span>/month</span></div>
+            <div class="pricing-desc">For growing teams that need full power.</div>
+            <ul class="pricing-features">
+              <li>25 team members</li>
+              <li>Unlimited workflows</li>
+              <li>All integrations</li>
+              <li>Priority support</li>
+              <li>Advanced analytics</li>
+              <li>AI task routing</li>
+            </ul>
+            <a href="#cta" class="fluent-btn fluent-btn-primary" style="width:100%;">Get started</a>
+          </div>
+          <div class="fluent-card pricing-card">
+            <div class="pricing-plan">Enterprise</div>
+            <div class="pricing-price">Custom</div>
+            <div class="pricing-desc">For organizations that need scale and compliance.</div>
+            <ul class="pricing-features">
+              <li>Unlimited members</li>
+              <li>SSO &amp; SAML</li>
+              <li>Dedicated success team</li>
+              <li>Custom SLA</li>
+              <li>On-premise option</li>
+              <li>Audit logs</li>
+            </ul>
+            <a href="#cta" class="fluent-btn fluent-btn-outline" style="width:100%;">Contact sales</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FAQ ═══ -->
+    <section class="faq reveal" id="faq">
+      <div class="container">
+        <p class="section-overline" style="text-align:center;">FAQ</p>
+        <h2 class="section-title" style="text-align:center;">Frequently asked questions</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              What is Flowstate?
+              <span class="faq-chevron">&#9660;</span>
+            </button>
+            <div class="faq-answer">
+              <p>Flowstate is an AI-powered workflow automation platform that helps teams design, route, and optimize complex processes. It combines a visual workflow builder with intelligent task routing to help your team ship faster with fewer bottlenecks.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              How does AI task routing work?
+              <span class="faq-chevron">&#9660;</span>
+            </button>
+            <div class="faq-answer">
+              <p>Our AI analyzes team capacity, expertise, historical performance, and priority to automatically assign tasks to the right person. It learns and improves over time, adapting to your team's patterns and preferences.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Can I try Flowstate for free?
+              <span class="faq-chevron">&#9660;</span>
+            </button>
+            <div class="faq-answer">
+              <p>Absolutely. We offer a 14-day free trial with full access to all Professional features. No credit card required — just sign up and start building workflows.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              What integrations do you support?
+              <span class="faq-chevron">&#9660;</span>
+            </button>
+            <div class="faq-answer">
+              <p>Flowstate integrates with 200+ tools including Slack, GitHub, Jira, Notion, Salesforce, HubSpot, Google Workspace, and many more. We also offer a REST and GraphQL API for custom integrations.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Is my data secure?
+              <span class="faq-chevron">&#9660;</span>
+            </button>
+            <div class="faq-answer">
+              <p>Security is foundational. Flowstate uses AES-256 encryption at rest and TLS 1.3 in transit. We're SOC 2 Type II certified, GDPR compliant, and offer single sign-on, audit logs, and role-based access control on Enterprise plans.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ CTA ═══ -->
+    <section class="cta-section" id="cta">
+      <div class="container">
+        <h2>Ready to accelerate your workflows?</h2>
+        <p>Join 10,000+ teams already automating with Flowstate.</p>
+        <a href="#" class="fluent-btn fluent-btn-lg">Start your free trial</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ═══ FOOTER ═══ -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <div class="footer-brand">Flowstate</div>
+          <p class="footer-brand-desc">AI-powered workflow automation for modern teams. Design, route, and optimize with confidence.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Integrations</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Changelog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Resources</h4>
+          <ul>
+            <li><a href="#">Documentation</a></li>
+            <li><a href="#">API Reference</a></li>
+            <li><a href="#">Status</a></li>
+            <li><a href="#">Community</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Security</a></li>
+            <li><a href="#">Cookies</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span class="footer-copy">&copy; 2026 Flowstate. All rights reserved.</span>
+        <div class="footer-legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Cookie Settings</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ═══ PAGE SWITCHER ═══ -->
+  <nav id="ps" aria-label="Page switcher">
+    <a href="index.html" title="Gallery">&#8962;</a>
+    <a href="1.html">1</a>
+    <a href="2.html">2</a>
+    <a href="3.html">3</a>
+    <a href="4.html">4</a>
+    <a href="5.html">5</a>
+    <a href="6.html" class="active">6</a>
+  </nav>
+
+  <script>
+    /* ═══ Theme Toggle ═══ */
+    const toggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+
+    toggle.addEventListener('click', () => {
+      const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+      html.setAttribute('data-theme', next);
+    });
+
+    /* ═══ Sticky Navbar Shadow ═══ */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 8);
+    }, { passive: true });
+
+    /* ═══ Mobile Nav Toggle ═══ */
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.getElementById('navLinks');
+
+    mobileToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('open');
+    });
+
+    /* ═══ FAQ Accordion ═══ */
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+
+        document.querySelectorAll('.faq-item.open').forEach(el => {
+          el.classList.remove('open');
+          el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+        });
+
+        if (!isOpen) {
+          item.classList.add('open');
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+
+    /* ═══ Reveal Highlight (Fluent 2 effect) ═══ */
+    document.querySelectorAll('.reveal-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty('--reveal-x', (e.clientX - rect.left) + 'px');
+        card.style.setProperty('--reveal-y', (e.clientY - rect.top) + 'px');
+      });
+    });
+
+    /* ═══ Scroll Reveal (IntersectionObserver) ═══ */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
