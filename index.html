@@ -581,6 +581,47 @@
     }
     .reveal.visible { opacity: 1; transform: translateY(0); }
 
+    /* ═══ Agent Copy Box ═══ */
+    .agent-copy-box {
+      display: flex; align-items: center; gap: var(--spacingM);
+      background: var(--colorNeutralBackground1);
+      border: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+      border-radius: var(--borderRadiusXLarge);
+      padding: 14px var(--spacingXXL);
+      margin-top: 40px; cursor: pointer;
+      box-shadow: var(--shadow2);
+      transition: box-shadow var(--durationNormal) var(--curveEasyEase),
+                  border-color var(--durationNormal) var(--curveEasyEase),
+                  background-color var(--durationSlower) var(--curveEasyEase);
+      max-width: 720px;
+    }
+    .agent-copy-box:hover {
+      box-shadow: var(--shadow8); border-color: var(--colorNeutralStroke1);
+    }
+    .agent-copy-box-text {
+      flex: 1; font-family: var(--fontFamilyMonospace);
+      font-size: var(--fontSizeBase200); line-height: 1.5;
+      color: var(--colorNeutralForeground2);
+      overflow: hidden; text-overflow: ellipsis;
+    }
+    .agent-copy-box-text strong { color: var(--colorBrandForeground1); font-weight: var(--fontWeightSemibold); }
+    .agent-copy-btn {
+      flex-shrink: 0; width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      border: none; background: var(--colorSubtleBackground);
+      border-radius: var(--borderRadiusMedium);
+      color: var(--colorNeutralForeground3); cursor: pointer;
+      transition: background-color var(--durationFaster) var(--curveEasyEase),
+                  color var(--durationFaster) var(--curveEasyEase);
+    }
+    .agent-copy-btn:hover { background: var(--colorSubtleBackgroundHover); color: var(--colorNeutralForeground1); }
+    .agent-copy-btn.copied { color: var(--colorStatusSuccessForeground1); }
+    .agent-copy-hint {
+      margin-top: var(--spacingS);
+      font-size: var(--fontSizeBase100);
+      color: var(--colorNeutralForeground4);
+    }
+
     /* ═══ Sub-grid helpers ═══ */
     .grid-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: var(--spacingL); }
     .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--spacingL); }
@@ -661,11 +702,20 @@
       <div class="container">
         <div class="hero-content">
           <div style="margin-bottom:var(--spacingXXL);">
-            <span class="fluent-badge fluent-badge-brand">Fluent 2 Design System</span>
+            <span class="fluent-badge fluent-badge-brand">Agent-Ready Design System</span>
           </div>
-          <h1>Design with<br><span class="brand-text">Fluent precision.</span></h1>
-          <p class="hero-desc">KolFluent is a complete design system following Microsoft's Fluent 2 guidance. Authentic tokens, materials, and interaction patterns — ready to drop into any project.</p>
-          <div class="hero-actions">
+          <h1>One file. Every<br><span class="brand-text">design decision.</span></h1>
+          <p class="hero-desc"><strong style="color:var(--colorNeutralForeground1);">KOL</strong><strong style="color:var(--colorBrandForeground1);">FLUENT</strong> is a complete design system in a single Markdown file. Copy the line below, give it to your AI agent, and ship consistent Fluent 2 UI from the first prompt.</p>
+
+          <div class="agent-copy-box" id="agentCopyBox" role="button" tabindex="0" aria-label="Copy agent instruction to clipboard">
+            <div class="agent-copy-box-text">Fetch <strong>https://raw.githubusercontent.com/GoatXYZ/KolFluent/main/KolFluent.md</strong> and use it as your design system</div>
+            <button class="agent-copy-btn" id="agentCopyBtn" aria-label="Copy">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M5 10.5H3.5a1.5 1.5 0 0 1-1.5-1.5v-6A1.5 1.5 0 0 1 3.5 1.5h6A1.5 1.5 0 0 1 11 3v1.5"/></svg>
+            </button>
+          </div>
+          <p class="agent-copy-hint">Click to copy — paste directly into your agent</p>
+
+          <div class="hero-actions" style="margin-top:32px;">
             <a href="#tokens" class="fluent-btn fluent-btn-primary fluent-btn-lg">Get tokens</a>
             <a href="https://fluent2.microsoft.design/" class="fluent-btn fluent-btn-outline fluent-btn-lg" target="_blank" rel="noopener">Fluent 2 Docs</a>
             <a href="KolFluent.md" class="fluent-btn fluent-btn-subtle fluent-btn-lg">Read full spec</a>
@@ -1199,6 +1249,25 @@
       });
     }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
     document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+    /* ═══ Agent Copy Box ═══ */
+    const agentCopyBox = document.getElementById('agentCopyBox');
+    const agentCopyBtn = document.getElementById('agentCopyBtn');
+    const agentText = 'Fetch https://raw.githubusercontent.com/GoatXYZ/KolFluent/main/KolFluent.md and use it as your design system';
+
+    function copyAgentInstruction() {
+      navigator.clipboard.writeText(agentText).then(() => {
+        agentCopyBtn.classList.add('copied');
+        agentCopyBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3.5 8.5 6.5 11.5 12.5 4.5"/></svg>';
+        setTimeout(() => {
+          agentCopyBtn.classList.remove('copied');
+          agentCopyBtn.innerHTML = '<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M5 10.5H3.5a1.5 1.5 0 0 1-1.5-1.5v-6A1.5 1.5 0 0 1 3.5 1.5h6A1.5 1.5 0 0 1 11 3v1.5"/></svg>';
+        }, 2000);
+      });
+    }
+
+    agentCopyBox.addEventListener('click', copyAgentInstruction);
+    agentCopyBox.addEventListener('keydown', (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); copyAgentInstruction(); } });
 
     /* ═══ Copy Tokens ═══ */
     function copyTokens(type) {
