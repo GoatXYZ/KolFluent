@@ -434,7 +434,685 @@ document.querySelectorAll('.reveal-card').forEach(card => {
 });
 ```
 
-### 7.3 Announcement Bar
+### 7.3 Badge
+
+Pill-shaped status indicator. 5 semantic variants.
+
+| Property | Style |
+|----------|-------|
+| Display | `inline-flex`, `align-items: center` |
+| Padding | `2px 8px` |
+| Radius | `--borderRadiusCircular` |
+| Font size | `--fontSizeBase100` (10px) |
+| Font weight | `--fontWeightSemibold` |
+| Letter spacing | `0.02em` |
+| Line height | `1.6` |
+
+**Variants**
+
+| Variant | Background | Text |
+|---------|-----------|------|
+| `brand` | `--colorBrandBackground2` | `--colorBrandForeground1` |
+| `success` | `--colorStatusSuccessBackground1` | `--colorStatusSuccessForeground1` |
+| `warning` | `--colorStatusWarningBackground1` | `--colorStatusWarningForeground1` |
+| `danger` | `--colorStatusDangerBackground1` | `--colorStatusDangerForeground1` |
+| `muted` | `--colorNeutralBackground3` | `--colorNeutralForeground3` |
+
+```css
+.fluent-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: var(--borderRadiusCircular);
+  font-size: var(--fontSizeBase100);
+  font-weight: var(--fontWeightSemibold);
+  letter-spacing: 0.02em;
+  line-height: 1.6;
+}
+
+.fluent-badge-brand { background: var(--colorBrandBackground2); color: var(--colorBrandForeground1); }
+.fluent-badge-success { background: var(--colorStatusSuccessBackground1); color: var(--colorStatusSuccessForeground1); }
+.fluent-badge-warning { background: var(--colorStatusWarningBackground1); color: var(--colorStatusWarningForeground1); }
+.fluent-badge-danger { background: var(--colorStatusDangerBackground1); color: var(--colorStatusDangerForeground1); }
+.fluent-badge-muted { background: var(--colorNeutralBackground3); color: var(--colorNeutralForeground3); }
+```
+
+### 7.4 Input
+
+Single-line text input with Fluent 2 focus ring.
+
+| Property | Style |
+|----------|-------|
+| Height | `32px` |
+| Padding | `0 12px` |
+| Font | `--fontSizeBase300` / `--fontFamilyBase` |
+| Color | `--colorNeutralForeground1` |
+| Background | `--colorNeutralBackground1` (light), `--colorNeutralBackground2` (dark) |
+| Border | `var(--strokeWidthThin) solid var(--colorNeutralStroke1)` |
+| Radius | `--borderRadiusMedium` |
+| Placeholder | `--colorNeutralForeground4` |
+
+**States**
+
+| State | Border | Box Shadow |
+|-------|--------|-----------|
+| Resting | `--colorNeutralStroke1` | none |
+| Focus (light) | `--colorBrandForeground1` | `0 0 0 2px rgba(15,108,189,0.15)` |
+| Focus (dark) | `--colorBrandForeground1` | `0 0 0 2px rgba(71,158,245,0.2)` |
+| Error | `--colorStatusDangerForeground1` | `0 0 0 2px rgba(196,49,75,0.15)` |
+| Disabled | `--colorNeutralStroke2` | none, `bg: --colorNeutralBackground3`, `color: --colorNeutralForegroundDisabled` |
+
+```css
+.fluent-input {
+  height: 32px;
+  padding: 0 12px;
+  font-size: var(--fontSizeBase300);
+  font-family: var(--fontFamilyBase);
+  color: var(--colorNeutralForeground1);
+  background: var(--colorNeutralBackground1);
+  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  border-radius: var(--borderRadiusMedium);
+  transition: border-color var(--durationFast) var(--curveEasyEase),
+              box-shadow var(--durationFast) var(--curveEasyEase);
+  outline: none;
+}
+
+.fluent-input::placeholder { color: var(--colorNeutralForeground4); }
+
+.fluent-input:focus {
+  border-color: var(--colorBrandForeground1);
+  box-shadow: 0 0 0 2px rgba(15,108,189,0.15);
+}
+
+[data-theme="dark"] .fluent-input { background: var(--colorNeutralBackground2); }
+[data-theme="dark"] .fluent-input:focus { box-shadow: 0 0 0 2px rgba(71,158,245,0.2); }
+
+.fluent-input:disabled {
+  color: var(--colorNeutralForegroundDisabled);
+  background: var(--colorNeutralBackground3);
+  border-color: var(--colorNeutralStroke2);
+  cursor: not-allowed;
+}
+
+.fluent-input-error { border-color: var(--colorStatusDangerForeground1); }
+.fluent-input-error:focus { box-shadow: 0 0 0 2px rgba(196,49,75,0.15); }
+```
+
+### 7.5 Select
+
+Dropdown selector. Same visual base as Input with a custom chevron indicator.
+
+| Property | Style |
+|----------|-------|
+| Height | `32px` |
+| Padding | `0 32px 0 12px` (room for chevron) |
+| Appearance | `none` (custom styling) |
+| Chevron | Inline SVG via `background-image`, positioned `right 10px center` |
+| Focus ring | Identical to Input |
+| Disabled | Same as Input disabled |
+
+```css
+.fluent-select {
+  height: 32px;
+  padding: 0 32px 0 12px;
+  font-size: var(--fontSizeBase300);
+  font-family: var(--fontFamilyBase);
+  color: var(--colorNeutralForeground1);
+  background: var(--colorNeutralBackground1);
+  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  border-radius: var(--borderRadiusMedium);
+  appearance: none;
+  -webkit-appearance: none;
+  background-image: url("data:image/svg+xml,..."); /* 12x12 chevron SVG */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  transition: border-color var(--durationFast) var(--curveEasyEase),
+              box-shadow var(--durationFast) var(--curveEasyEase);
+  outline: none;
+  cursor: pointer;
+}
+
+.fluent-select:focus {
+  border-color: var(--colorBrandForeground1);
+  box-shadow: 0 0 0 2px rgba(15,108,189,0.15);
+}
+
+[data-theme="dark"] .fluent-select { background-color: var(--colorNeutralBackground2); }
+[data-theme="dark"] .fluent-select:focus { box-shadow: 0 0 0 2px rgba(71,158,245,0.2); }
+```
+
+### 7.6 Textarea
+
+Multi-line text input with vertical resizing.
+
+| Property | Style |
+|----------|-------|
+| Min height | `60px` |
+| Padding | `8px 12px` |
+| Resize | `vertical` |
+| Line height | `--lineHeightBase300` |
+| Focus ring | Identical to Input |
+| Disabled | Same as Input disabled |
+
+```css
+.fluent-textarea {
+  min-height: 60px;
+  padding: 8px 12px;
+  font-size: var(--fontSizeBase300);
+  font-family: var(--fontFamilyBase);
+  color: var(--colorNeutralForeground1);
+  background: var(--colorNeutralBackground1);
+  border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+  border-radius: var(--borderRadiusMedium);
+  resize: vertical;
+  line-height: var(--lineHeightBase300);
+  transition: border-color var(--durationFast) var(--curveEasyEase),
+              box-shadow var(--durationFast) var(--curveEasyEase);
+  outline: none;
+}
+
+.fluent-textarea::placeholder { color: var(--colorNeutralForeground4); }
+
+.fluent-textarea:focus {
+  border-color: var(--colorBrandForeground1);
+  box-shadow: 0 0 0 2px rgba(15,108,189,0.15);
+}
+
+[data-theme="dark"] .fluent-textarea { background: var(--colorNeutralBackground2); }
+[data-theme="dark"] .fluent-textarea:focus { box-shadow: 0 0 0 2px rgba(71,158,245,0.2); }
+```
+
+### 7.7 Label
+
+Form field label with optional required indicator.
+
+| Property | Style |
+|----------|-------|
+| Display | `block` |
+| Font size | `--fontSizeBase300` |
+| Font weight | `--fontWeightMedium` |
+| Color | `--colorNeutralForeground1` |
+| Margin bottom | `--spacingXS` (4px) |
+| Required indicator | `::after` pseudo with red `*` |
+| Disabled | `--colorNeutralForegroundDisabled` |
+
+```css
+.fluent-label {
+  display: block;
+  font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightMedium);
+  color: var(--colorNeutralForeground1);
+  margin-bottom: var(--spacingXS);
+  line-height: var(--lineHeightBase300);
+}
+
+.fluent-label-required::after {
+  content: ' *';
+  color: var(--colorStatusDangerForeground1);
+  font-weight: var(--fontWeightSemibold);
+}
+
+.fluent-label-disabled { color: var(--colorNeutralForegroundDisabled); }
+```
+
+### 7.8 Switch
+
+Toggle switch for binary on/off states. Uses a hidden `<input type="checkbox">` with visually styled track and thumb.
+
+| Property | Style |
+|----------|-------|
+| Track width | `40px` |
+| Track height | `20px` |
+| Track radius | `--borderRadiusCircular` |
+| Track bg (off) | `--colorNeutralBackground1` |
+| Track border (off) | `--colorNeutralStrokeAccessible` |
+| Track bg (on) | `--colorCompoundBrandBackground` |
+| Thumb size | `14px` |
+| Thumb bg (off) | `--colorNeutralForeground3` |
+| Thumb bg (on) | `white` |
+| Thumb travel | `translateX(20px)` |
+| Label gap | `--spacingS` |
+| Focus ring | Brand focus ring on track |
+| Transition | `var(--durationNormal) var(--curveDecelerateMid)` (thumb), `var(--curveEasyEase)` (track) |
+
+```html
+<label class="fluent-switch">
+  <input type="checkbox" checked>
+  <span class="fluent-switch-track">
+    <span class="fluent-switch-thumb"></span>
+  </span>
+  <span class="fluent-switch-label">Label text</span>
+</label>
+```
+
+```css
+.fluent-switch { display: inline-flex; align-items: center; gap: var(--spacingS); cursor: pointer; }
+.fluent-switch input { /* sr-only */ position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); }
+
+.fluent-switch-track {
+  position: relative; width: 40px; height: 20px;
+  border-radius: var(--borderRadiusCircular);
+  background: var(--colorNeutralBackground1);
+  border: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
+  transition: background-color var(--durationNormal) var(--curveEasyEase),
+              border-color var(--durationNormal) var(--curveEasyEase);
+}
+
+.fluent-switch-thumb {
+  position: absolute; top: 3px; left: 3px; width: 14px; height: 14px;
+  border-radius: var(--borderRadiusCircular);
+  background: var(--colorNeutralForeground3);
+  transition: transform var(--durationNormal) var(--curveDecelerateMid),
+              background-color var(--durationNormal) var(--curveEasyEase);
+}
+
+.fluent-switch input:checked + .fluent-switch-track {
+  background: var(--colorCompoundBrandBackground);
+  border-color: var(--colorCompoundBrandBackground);
+}
+.fluent-switch input:checked + .fluent-switch-track .fluent-switch-thumb {
+  transform: translateX(20px); background: white;
+}
+```
+
+### 7.9 Checkbox
+
+Standard checkbox with checkmark SVG. Uses hidden input + styled box pattern.
+
+| Property | Style |
+|----------|-------|
+| Box size | `16px` |
+| Radius | `--borderRadiusSmall` (2px) |
+| Border (off) | `--colorNeutralStrokeAccessible` |
+| Background (off) | `--colorNeutralBackground1` |
+| Background (on) | `--colorCompoundBrandBackground` |
+| Checkmark | White SVG stroke, fades in on check |
+| Focus ring | Brand focus ring on box |
+
+```html
+<label class="fluent-checkbox">
+  <input type="checkbox" checked>
+  <span class="fluent-checkbox-box">
+    <svg width="10" height="10" viewBox="0 0 10 10" fill="none">
+      <path d="M2 5L4.5 7.5L8 3" stroke="white" stroke-width="1.5"
+            stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </span>
+  <span class="fluent-checkbox-label">Label text</span>
+</label>
+```
+
+```css
+.fluent-checkbox-box {
+  width: 16px; height: 16px; border-radius: var(--borderRadiusSmall);
+  border: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
+  background: var(--colorNeutralBackground1);
+  display: flex; align-items: center; justify-content: center;
+  transition: background-color var(--durationFast) var(--curveEasyEase),
+              border-color var(--durationFast) var(--curveEasyEase);
+}
+
+.fluent-checkbox-box svg { opacity: 0; transition: opacity var(--durationFast) var(--curveEasyEase); }
+
+.fluent-checkbox input:checked + .fluent-checkbox-box {
+  background: var(--colorCompoundBrandBackground);
+  border-color: var(--colorCompoundBrandBackground);
+}
+.fluent-checkbox input:checked + .fluent-checkbox-box svg { opacity: 1; }
+```
+
+### 7.10 Radio
+
+Radio button for single selection from a group. Uses filled circle indicator.
+
+| Property | Style |
+|----------|-------|
+| Circle size | `16px` |
+| Radius | `--borderRadiusCircular` |
+| Border (off) | `--colorNeutralStrokeAccessible` |
+| Border (on) | `--colorCompoundBrandBackground` |
+| Inner dot (on) | `6px` circle, `--colorCompoundBrandBackground` |
+| Dot animation | `width/height 0→6px` via `var(--curveDecelerateMid)` |
+| Focus ring | Brand focus ring on circle |
+
+```html
+<div class="fluent-radio-group">
+  <label class="fluent-radio">
+    <input type="radio" name="group" checked>
+    <span class="fluent-radio-circle"></span>
+    <span class="fluent-radio-label">Option A</span>
+  </label>
+  <label class="fluent-radio">
+    <input type="radio" name="group">
+    <span class="fluent-radio-circle"></span>
+    <span class="fluent-radio-label">Option B</span>
+  </label>
+</div>
+```
+
+```css
+.fluent-radio-circle {
+  width: 16px; height: 16px; border-radius: var(--borderRadiusCircular);
+  border: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
+  background: var(--colorNeutralBackground1); position: relative;
+}
+
+.fluent-radio-circle::after {
+  content: ''; position: absolute; top: 50%; left: 50%;
+  width: 0; height: 0; border-radius: var(--borderRadiusCircular);
+  background: var(--colorCompoundBrandBackground);
+  transform: translate(-50%, -50%);
+  transition: width var(--durationFast) var(--curveDecelerateMid),
+              height var(--durationFast) var(--curveDecelerateMid);
+}
+
+.fluent-radio input:checked + .fluent-radio-circle { border-color: var(--colorCompoundBrandBackground); }
+.fluent-radio input:checked + .fluent-radio-circle::after { width: 6px; height: 6px; }
+```
+
+### 7.11 Progress
+
+Thin progress bar indicating completion percentage. Set width via `--progress` CSS custom property.
+
+| Property | Style |
+|----------|-------|
+| Track height | `2px` (default), `4px` (`.fluent-progress-lg`) |
+| Track bg | `--colorNeutralBackground5` |
+| Track radius | `--borderRadiusCircular` |
+| Bar bg | `--colorCompoundBrandBackground` |
+| Bar width | `var(--progress)` custom property |
+| Transition | `width var(--durationSlow) var(--curveDecelerateMid)` |
+
+```html
+<div class="fluent-progress" style="--progress: 68%;">
+  <div class="fluent-progress-bar"></div>
+</div>
+```
+
+```css
+.fluent-progress {
+  width: 100%; height: 2px;
+  background: var(--colorNeutralBackground5);
+  border-radius: var(--borderRadiusCircular);
+  overflow: hidden;
+}
+
+.fluent-progress-bar {
+  height: 100%; width: var(--progress, 0%);
+  background: var(--colorCompoundBrandBackground);
+  border-radius: var(--borderRadiusCircular);
+  transition: width var(--durationSlow) var(--curveDecelerateMid);
+}
+
+.fluent-progress-lg { height: 4px; }
+```
+
+### 7.12 Avatar
+
+Circular user representation showing initials or an image.
+
+| Property | Style |
+|----------|-------|
+| Shape | Circle (`--borderRadiusCircular`) |
+| Background | `--colorBrandBackground` |
+| Text color | `--colorNeutralForegroundOnBrand` |
+| Font weight | `--fontWeightSemibold` |
+
+**Sizes**
+
+| Size | Dimensions | Font Size |
+|------|-----------|-----------|
+| `sm` | `24px` | `--fontSizeBase100` (10px) |
+| default | `32px` | `--fontSizeBase200` (12px) |
+| `lg` | `40px` | `--fontSizeBase300` (14px) |
+| `xl` | `56px` | `--fontSizeBase400` (16px) |
+
+```css
+.fluent-avatar {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 32px; height: 32px; border-radius: var(--borderRadiusCircular);
+  background: var(--colorBrandBackground);
+  color: var(--colorNeutralForegroundOnBrand);
+  font-size: var(--fontSizeBase200); font-weight: var(--fontWeightSemibold);
+  overflow: hidden; flex-shrink: 0;
+}
+
+.fluent-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.fluent-avatar-sm { width: 24px; height: 24px; font-size: var(--fontSizeBase100); }
+.fluent-avatar-lg { width: 40px; height: 40px; font-size: var(--fontSizeBase300); }
+.fluent-avatar-xl { width: 56px; height: 56px; font-size: var(--fontSizeBase400); }
+```
+
+### 7.13 Divider
+
+Horizontal or vertical separator line.
+
+| Variant | Style |
+|---------|-------|
+| Default | `1px solid --colorNeutralStroke2`, horizontal |
+| Brand | `--colorBrandStroke1` |
+| Subtle | `--colorNeutralStroke3` |
+| Vertical | `border-left` instead of `border-top`, `height: 20px`, `display: inline-block` |
+
+```css
+.fluent-divider {
+  border: none; border-top: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+  margin: var(--spacingL) 0;
+}
+
+.fluent-divider-brand { border-top-color: var(--colorBrandStroke1); }
+.fluent-divider-subtle { border-top-color: var(--colorNeutralStroke3); }
+
+.fluent-divider-vertical {
+  display: inline-block; border-top: none;
+  border-left: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+  height: 20px; margin: 0 var(--spacingM); vertical-align: middle;
+}
+```
+
+### 7.14 Tabs
+
+Horizontal tab navigation with indicator underline and ARIA roles.
+
+| Property | Style |
+|----------|-------|
+| Tab list border | `var(--strokeWidthThin) solid var(--colorNeutralStroke2)` (bottom) |
+| Tab padding | `10px 16px` |
+| Tab font | `--fontSizeBase300`, `--fontWeightRegular` |
+| Tab color | `--colorNeutralForeground2` |
+| Tab hover | `--colorNeutralForeground1` |
+| Selected indicator | `2px solid --colorCompoundBrandBackground` bottom border |
+| Selected font weight | `--fontWeightSemibold` |
+| Selected color | `--colorNeutralForeground1` |
+| Panel padding | `--spacingXXL 0` |
+| ARIA | `role="tablist"`, `role="tab"`, `aria-selected`, `role="tabpanel"` |
+
+```html
+<div class="fluent-tabs" role="tablist">
+  <button class="fluent-tab active" role="tab" aria-selected="true" data-tab="one">Tab 1</button>
+  <button class="fluent-tab" role="tab" aria-selected="false" data-tab="two">Tab 2</button>
+</div>
+<div class="fluent-tab-panel" id="tab-one" role="tabpanel">Content 1</div>
+<div class="fluent-tab-panel" id="tab-two" role="tabpanel" hidden>Content 2</div>
+```
+
+```css
+.fluent-tabs {
+  display: flex;
+  border-bottom: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+}
+
+.fluent-tab {
+  padding: 10px 16px; font-size: var(--fontSizeBase300);
+  font-weight: var(--fontWeightRegular); color: var(--colorNeutralForeground2);
+  background: none; border: none; cursor: pointer;
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+  transition: color var(--durationFaster) var(--curveEasyEase),
+              border-color var(--durationFaster) var(--curveEasyEase);
+}
+
+.fluent-tab:hover { color: var(--colorNeutralForeground1); }
+
+.fluent-tab[aria-selected="true"] {
+  color: var(--colorNeutralForeground1);
+  font-weight: var(--fontWeightSemibold);
+  border-bottom-color: var(--colorCompoundBrandBackground);
+}
+
+.fluent-tab-panel { padding: var(--spacingXXL) 0; }
+.fluent-tab-panel[hidden] { display: none; }
+```
+
+```js
+// Tab switching
+document.querySelectorAll('.fluent-tabs').forEach(tabList => {
+  const tabs = tabList.querySelectorAll('.fluent-tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected', 'true');
+      const target = tab.getAttribute('data-tab');
+      tabList.parentElement.querySelectorAll('.fluent-tab-panel').forEach(p => p.hidden = true);
+      document.getElementById('tab-' + target).hidden = false;
+    });
+  });
+});
+```
+
+### 7.15 Dialog
+
+Modal dialog using the native `<dialog>` element with Fluent 2 styling.
+
+| Property | Style |
+|----------|-------|
+| Max width | `600px` |
+| Background | `--colorNeutralBackground1` |
+| Radius | `--borderRadiusXLarge` |
+| Shadow | `--shadow64` |
+| Backdrop | `rgba(0,0,0,0.4)` |
+| Header padding | `--spacingXXL --spacingXXL 0` |
+| Body padding | `--spacingL --spacingXXL` |
+| Footer padding | `0 --spacingXXL --spacingXXL` |
+| Footer alignment | `flex-end`, `gap: --spacingS` |
+| Title font | `--fontSizeBase500`, `--fontWeightSemibold` |
+| Close button | `28px`, subtle background, centered icon |
+| ARIA | `<dialog>` with `.showModal()` / `.close()` |
+
+```html
+<dialog class="fluent-dialog" id="myDialog">
+  <div class="fluent-dialog-header">
+    <span class="fluent-dialog-title">Title</span>
+    <button class="fluent-dialog-close" aria-label="Close">✕</button>
+  </div>
+  <div class="fluent-dialog-body">Body content.</div>
+  <div class="fluent-dialog-footer">
+    <button class="fluent-btn fluent-btn-outline">Cancel</button>
+    <button class="fluent-btn fluent-btn-primary">Confirm</button>
+  </div>
+</dialog>
+```
+
+```css
+.fluent-dialog {
+  border: none; padding: 0; max-width: 600px; width: calc(100% - 48px);
+  border-radius: var(--borderRadiusXLarge);
+  background: var(--colorNeutralBackground1);
+  box-shadow: var(--shadow64);
+  color: var(--colorNeutralForeground1);
+}
+
+.fluent-dialog::backdrop { background: rgba(0,0,0,0.4); }
+
+.fluent-dialog-header {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: var(--spacingXXL) var(--spacingXXL) 0;
+}
+
+.fluent-dialog-body {
+  padding: var(--spacingL) var(--spacingXXL);
+  font-size: var(--fontSizeBase300); color: var(--colorNeutralForeground2);
+}
+
+.fluent-dialog-footer {
+  display: flex; justify-content: flex-end; gap: var(--spacingS);
+  padding: 0 var(--spacingXXL) var(--spacingXXL);
+}
+```
+
+```js
+const dialog = document.getElementById('myDialog');
+document.getElementById('openBtn').addEventListener('click', () => dialog.showModal());
+document.getElementById('closeBtn').addEventListener('click', () => dialog.close());
+dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+```
+
+### 7.16 Menu
+
+Dropdown action menu triggered by a button click.
+
+| Property | Style |
+|----------|-------|
+| Position | `absolute`, below trigger |
+| Min width | `160px` |
+| Background | `--colorNeutralBackground1` |
+| Border | `var(--strokeWidthThin) solid var(--colorNeutralStroke2)` |
+| Radius | `--borderRadiusLarge` |
+| Shadow | `--shadow16` |
+| Padding | `4px` |
+| Item padding | `6px 12px` |
+| Item radius | `--borderRadiusSmall` |
+| Item hover | `--colorSubtleBackgroundHover`, `--colorNeutralForeground1` |
+| Divider | `--colorNeutralStroke2`, `margin: 4px 0` |
+| ARIA | `role="menu"`, `role="menuitem"`, `aria-haspopup`, `aria-expanded` |
+| Animation | Fade + `translateY(4px)` → `translateY(0)` on open |
+
+```html
+<div class="fluent-menu-wrapper">
+  <button class="fluent-btn fluent-btn-outline" aria-haspopup="true" aria-expanded="false">
+    Actions ▾
+  </button>
+  <div class="fluent-menu" role="menu">
+    <button class="fluent-menu-item" role="menuitem">Edit</button>
+    <button class="fluent-menu-item" role="menuitem">Duplicate</button>
+    <hr class="fluent-menu-divider">
+    <button class="fluent-menu-item" role="menuitem">Delete</button>
+  </div>
+</div>
+```
+
+```css
+.fluent-menu-wrapper { position: relative; display: inline-block; }
+
+.fluent-menu {
+  position: absolute; top: 100%; left: 0; z-index: 100; min-width: 160px;
+  background: var(--colorNeutralBackground1);
+  border: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+  border-radius: var(--borderRadiusLarge);
+  box-shadow: var(--shadow16); padding: 4px;
+  opacity: 0; visibility: hidden; transform: translateY(4px);
+  transition: opacity var(--durationFast) var(--curveEasyEase),
+              transform var(--durationFast) var(--curveEasyEase);
+}
+
+.fluent-menu.open { opacity: 1; visibility: visible; transform: translateY(0); }
+
+.fluent-menu-item {
+  display: flex; align-items: center; gap: var(--spacingS); width: 100%;
+  padding: 6px 12px; font-size: var(--fontSizeBase300);
+  color: var(--colorNeutralForeground2); background: none;
+  border: none; border-radius: var(--borderRadiusSmall);
+  cursor: pointer; text-align: left;
+  transition: background-color var(--durationFaster) var(--curveEasyEase);
+}
+
+.fluent-menu-item:hover {
+  background: var(--colorSubtleBackgroundHover);
+  color: var(--colorNeutralForeground1);
+}
+```
+
+### 7.17 Announcement Bar
 
 | Property | Style |
 |----------|-------|
@@ -447,7 +1125,7 @@ document.querySelectorAll('.reveal-card').forEach(card => {
 | Link style | Inherited color, `--fontWeightSemibold`, `underline`, `text-underline-offset: 2px` |
 | Link hover | `opacity: 0.85` |
 
-### 7.4 Navbar — Acrylic Material
+### 7.18 Navbar — Acrylic Material
 
 | Property | Style |
 |----------|-------|
@@ -471,7 +1149,7 @@ document.querySelectorAll('.reveal-card').forEach(card => {
 | Default | `--colorNeutralForeground2` | `transparent` |
 | Hover | `--colorNeutralForeground1` | `--colorSubtleBackgroundHover` |
 
-### 7.5 Hero Section — Mica-Inspired
+### 7.19 Hero Section — Mica-Inspired
 
 | Property | Style |
 |----------|-------|
@@ -484,7 +1162,7 @@ document.querySelectorAll('.reveal-card').forEach(card => {
 | Description | `--fontSizeBase400`, `--colorNeutralForeground2`, `max-width: 500px` |
 | Actions | Flex, `gap: var(--spacingM)`, primary + outline buttons in `lg` size |
 
-### 7.6 Floating Surfaces (Hero Visual)
+### 7.20 Floating Surfaces (Hero Visual)
 
 Three animated card-like surfaces positioned absolutely within the hero visual area.
 
@@ -513,7 +1191,7 @@ All surfaces share: `--colorNeutralBackground1` bg, `--strokeWidthThin solid --c
 }
 ```
 
-### 7.7 Social Proof
+### 7.21 Social Proof
 
 | Property | Style |
 |----------|-------|
@@ -523,7 +1201,7 @@ All surfaces share: `--colorNeutralBackground1` bg, `--strokeWidthThin solid --c
 | Logo text | `--fontSizeBase400`, `--fontWeightSemibold`, `--colorNeutralForeground4` |
 | Logo gap | `40px`, flex wrap |
 
-### 7.8 Section Header (Reusable Pattern)
+### 7.22 Section Header (Reusable Pattern)
 
 Used by Features, Dashboard, Testimonials, Pricing, and FAQ sections.
 
@@ -533,7 +1211,7 @@ Used by Features, Dashboard, Testimonials, Pricing, and FAQ sections.
 | Title | `font-size: clamp(var(--fontSizeBase600), 3vw, var(--fontSizeHero700))`, `--fontWeightSemibold`, `--lineHeightHero700`, `margin-bottom: var(--spacingS)` |
 | Description | `--fontSizeBase400`, `--lineHeightBase400`, `--colorNeutralForeground3`, `max-width: 560px`, `margin-bottom: 48px` |
 
-### 7.9 Feature Card
+### 7.23 Feature Card
 
 Extends `fluent-card` with feature-specific content.
 
@@ -545,7 +1223,7 @@ Extends `fluent-card` with feature-specific content.
 | Description | `--fontSizeBase300`, `--lineHeightBase300`, `--colorNeutralForeground3` |
 | Grid | `3 columns`, `gap: var(--spacingL)` |
 
-### 7.10 Dashboard Preview
+### 7.24 Dashboard Preview
 
 Full app mockup component.
 
@@ -558,7 +1236,7 @@ Full app mockup component.
 | Dash Card | `--borderRadiusLarge`, `padding: 16px`, label (`--fontSizeBase200`, `--colorNeutralForeground3`), value (`--fontSizeBase600`, `--fontWeightSemibold`), change (`--fontSizeBase100`, `--colorStatusSuccessForeground1`) |
 | Chart Bars | `--borderRadiusSmall` top, `--colorBrandBackground2` default, `--colorBrandBackground` active, flex-equal width |
 
-### 7.11 Metric Card
+### 7.25 Metric Card
 
 Extends `fluent-card`. Center-aligned.
 
@@ -569,7 +1247,7 @@ Extends `fluent-card`. Center-aligned.
 | Label | `--fontSizeBase300`, `--colorNeutralForeground3` |
 | Grid | `4 columns`, `gap: var(--spacingL)` |
 
-### 7.12 Testimonial Card
+### 7.26 Testimonial Card
 
 Extends `fluent-card`. Flex column.
 
@@ -583,7 +1261,7 @@ Extends `fluent-card`. Flex column.
 | Title | `--fontSizeBase200`, `--colorNeutralForeground4` |
 | Grid | `3 columns`, `gap: var(--spacingL)`, `margin-top: 48px` |
 
-### 7.13 Pricing Card
+### 7.27 Pricing Card
 
 Extends `fluent-card`. Flex column.
 
@@ -617,7 +1295,7 @@ Extends `fluent-card`. Flex column.
 }
 ```
 
-### 7.14 FAQ Accordion
+### 7.28 FAQ Accordion
 
 | Element | Style |
 |---------|-------|
@@ -651,7 +1329,7 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 });
 ```
 
-### 7.15 CTA Section
+### 7.29 CTA Section
 
 | Property | Style |
 |----------|-------|
@@ -662,7 +1340,7 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 | Description | `--fontSizeBase400`, `rgba(255,255,255,0.8)` |
 | Button | Inverted: `white` bg, `--colorBrandBackground` text, hover `rgba(255,255,255,0.9)` |
 
-### 7.16 Footer
+### 7.30 Footer
 
 | Element | Style |
 |---------|-------|
@@ -678,7 +1356,7 @@ document.querySelectorAll('.faq-question').forEach(btn => {
 | Copyright | `--fontSizeBase100`, `--colorNeutralForeground4` |
 | Legal links | `--fontSizeBase100`, `--colorNeutralForeground4`, `gap: var(--spacingL)` |
 
-### 7.17 Theme Toggle
+### 7.31 Theme Toggle
 
 | Property | Style |
 |----------|-------|
@@ -830,7 +1508,7 @@ Primary button in navbar right area. Default size (32px).
 
 ### Theme Toggle
 
-Ghost icon button, `32x32`, sun/moon swap. See Section 7.17.
+Ghost icon button, `32x32`, sun/moon swap. See Section 7.31.
 
 ### Mobile Toggle
 
@@ -943,18 +1621,143 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
 Mouse-tracking Reveal Highlight effect. Applies via `mousemove` handler setting `--reveal-x` and `--reveal-y` CSS properties. See Section 7.2 for implementation.
 
+### `fluent-disabled` / `:disabled`
+
+Shared disabled state pattern applied to all interactive components.
+
+```css
+/* Buttons */
+.fluent-btn:disabled, .fluent-btn.fluent-disabled {
+  color: var(--colorNeutralForegroundDisabled);
+  background: var(--colorNeutralBackground3);
+  border-color: var(--colorNeutralStroke2);
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Inputs, Selects, Textareas */
+.fluent-input:disabled, .fluent-select:disabled, .fluent-textarea:disabled {
+  color: var(--colorNeutralForegroundDisabled);
+  background: var(--colorNeutralBackground3);
+  border-color: var(--colorNeutralStroke2);
+  cursor: not-allowed;
+}
+
+/* Switch, Checkbox, Radio */
+.fluent-switch input:disabled + .fluent-switch-track { opacity: 0.4; cursor: not-allowed; }
+.fluent-checkbox input:disabled + .fluent-checkbox-box { opacity: 0.4; cursor: not-allowed; }
+.fluent-radio input:disabled + .fluent-radio-circle { opacity: 0.4; cursor: not-allowed; }
+```
+
+### `fluent-pulse`
+
+Loading skeleton shimmer animation for placeholder content.
+
+```css
+@keyframes fluent-pulse {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.fluent-pulse {
+  background: linear-gradient(90deg,
+    var(--colorNeutralBackground3) 25%,
+    var(--colorNeutralBackground4) 50%,
+    var(--colorNeutralBackground3) 75%
+  );
+  background-size: 200% 100%;
+  animation: fluent-pulse 1.5s var(--curveEasyEase) infinite;
+  border-radius: var(--borderRadiusMedium);
+}
+```
+
+### `fluent-accent-stripe`
+
+Branded left-border callout for important notices.
+
+```css
+.fluent-accent-stripe {
+  border-left: 2px solid var(--colorBrandBackground);
+  padding-left: var(--spacingL);
+}
+```
+
 ---
 
 ## 11. Accessibility
 
-- **Skip link**: Not present in prototype — recommend adding `<a href="#main-content">Skip to main content</a>` with `sr-only` + focus-visible styling for production.
+### Skip Link
+
+Keyboard-accessible bypass link, hidden until focused.
+
+```html
+<a href="#main" class="skip-link">Skip to main content</a>
+```
+
+```css
+.skip-link {
+  position: absolute; left: -9999px; top: auto;
+  width: 1px; height: 1px; overflow: hidden;
+  z-index: 10000; padding: 8px 16px;
+  background: var(--colorBrandBackground);
+  color: var(--colorNeutralForegroundOnBrand);
+  font-size: var(--fontSizeBase300); font-weight: var(--fontWeightSemibold);
+  border-radius: var(--borderRadiusMedium); text-decoration: none;
+}
+
+.skip-link:focus {
+  position: fixed; left: var(--spacingL); top: var(--spacingL);
+  width: auto; height: auto;
+}
+```
+
+### Focus Ring Pattern
+
+All form controls share a consistent brand focus ring:
+
+| Theme | Border | Box Shadow |
+|-------|--------|-----------|
+| Light | `var(--colorBrandForeground1)` | `0 0 0 2px rgba(15,108,189,0.15)` |
+| Dark | `var(--colorBrandForeground1)` | `0 0 0 2px rgba(71,158,245,0.2)` |
+
+Applied to: Input, Select, Textarea, Switch (on track), Checkbox (on box), Radio (on circle).
+
+```css
+/* Light mode focus ring */
+.fluent-input:focus,
+.fluent-select:focus,
+.fluent-textarea:focus {
+  border-color: var(--colorBrandForeground1);
+  box-shadow: 0 0 0 2px rgba(15,108,189,0.15);
+}
+
+/* Dark mode focus ring */
+[data-theme="dark"] .fluent-input:focus,
+[data-theme="dark"] .fluent-select:focus,
+[data-theme="dark"] .fluent-textarea:focus {
+  box-shadow: 0 0 0 2px rgba(71,158,245,0.2);
+}
+```
+
+### ARIA Attributes
+
 - **Theme toggle**: `aria-label="Toggle theme"`.
 - **Mobile toggle**: `aria-label="Menu"`.
 - **FAQ accordion**: `aria-expanded` toggled on each question button. Exclusive open behavior (one at a time).
 - **Hero visual**: `aria-hidden="true"` on the decorative floating surfaces.
-- **Accessible strokes**: `--colorNeutralStrokeAccessible` provides WCAG AA-compliant stroke colors in both themes (`#616161` light, `#adadad` dark).
-- **Color contrast**: Fluent 2 tokens are designed for WCAG AA compliance. Primary text (`--colorNeutralForeground1`) meets AA against the page background in both themes.
-- **Reduced motion**: Recommend adding for production:
+- **Tabs**: `role="tablist"`, `role="tab"`, `aria-selected`, `role="tabpanel"`.
+- **Dialog**: Native `<dialog>` element with `.showModal()` / `.close()`.
+- **Menu**: `role="menu"`, `role="menuitem"`, `aria-haspopup`, `aria-expanded`.
+
+### Accessible Strokes
+
+`--colorNeutralStrokeAccessible` provides WCAG AA-compliant stroke colors in both themes (`#616161` light, `#adadad` dark).
+
+### Color Contrast
+
+Fluent 2 tokens are designed for WCAG AA compliance. Primary text (`--colorNeutralForeground1`) meets AA against the page background in both themes.
+
+### Reduced Motion
 
 ```css
 @media (prefers-reduced-motion: reduce) {
@@ -964,6 +1767,18 @@ Mouse-tracking Reveal Highlight effect. Applies via `mousemove` handler setting 
     transition-duration: 0.01ms !important;
   }
   .reveal { opacity: 1; transform: none; }
+}
+```
+
+### Print Styles
+
+```css
+@media print {
+  body { background: white !important; color: black !important; }
+  .navbar, .site-footer, .theme-toggle { display: none !important; }
+  .fluent-card { box-shadow: none !important; border: 1px solid #ccc !important; }
+  .reveal { opacity: 1 !important; transform: none !important; }
+  .section { padding: 24px 0 !important; }
 }
 ```
 

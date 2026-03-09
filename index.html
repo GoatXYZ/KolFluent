@@ -538,6 +538,259 @@
     }
     [data-theme="dark"] .fluent-input { background: var(--colorNeutralBackground2); }
     [data-theme="dark"] .fluent-input:focus { box-shadow: 0 0 0 2px rgba(71,158,245,0.2); }
+    .fluent-input:disabled, .fluent-input.fluent-disabled {
+      color: var(--colorNeutralForegroundDisabled); background: var(--colorNeutralBackground3);
+      border-color: var(--colorNeutralStroke2); cursor: not-allowed; opacity: 1;
+    }
+    .fluent-input-error { border-color: var(--colorStatusDangerForeground1); }
+    .fluent-input-error:focus { border-color: var(--colorStatusDangerForeground1); box-shadow: 0 0 0 2px rgba(196,49,75,0.15); }
+
+    /* ═══ Select ═══ */
+    .fluent-select {
+      height: 32px; padding: 0 32px 0 12px; font-size: var(--fontSizeBase300);
+      font-family: var(--fontFamilyBase); color: var(--colorNeutralForeground1);
+      background: var(--colorNeutralBackground1);
+      border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+      border-radius: var(--borderRadiusMedium); appearance: none; -webkit-appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' stroke='%23616161' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: right 10px center;
+      transition: border-color var(--durationFast) var(--curveEasyEase),
+                  box-shadow var(--durationFast) var(--curveEasyEase),
+                  background-color var(--durationSlower) var(--curveEasyEase);
+      outline: none; cursor: pointer;
+    }
+    .fluent-select:focus {
+      border-color: var(--colorBrandForeground1);
+      box-shadow: 0 0 0 2px rgba(15,108,189,0.15);
+    }
+    [data-theme="dark"] .fluent-select {
+      background-color: var(--colorNeutralBackground2);
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 4.5L6 7.5L9 4.5' stroke='%23adadad' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E");
+    }
+    [data-theme="dark"] .fluent-select:focus { box-shadow: 0 0 0 2px rgba(71,158,245,0.2); }
+    .fluent-select:disabled { color: var(--colorNeutralForegroundDisabled); background-color: var(--colorNeutralBackground3); border-color: var(--colorNeutralStroke2); cursor: not-allowed; }
+
+    /* ═══ Textarea ═══ */
+    .fluent-textarea {
+      min-height: 60px; padding: 8px 12px; font-size: var(--fontSizeBase300);
+      font-family: var(--fontFamilyBase); color: var(--colorNeutralForeground1);
+      background: var(--colorNeutralBackground1);
+      border: var(--strokeWidthThin) solid var(--colorNeutralStroke1);
+      border-radius: var(--borderRadiusMedium); resize: vertical;
+      transition: border-color var(--durationFast) var(--curveEasyEase),
+                  box-shadow var(--durationFast) var(--curveEasyEase),
+                  background-color var(--durationSlower) var(--curveEasyEase);
+      outline: none; line-height: var(--lineHeightBase300);
+    }
+    .fluent-textarea::placeholder { color: var(--colorNeutralForeground4); }
+    .fluent-textarea:focus {
+      border-color: var(--colorBrandForeground1);
+      box-shadow: 0 0 0 2px rgba(15,108,189,0.15);
+    }
+    [data-theme="dark"] .fluent-textarea { background: var(--colorNeutralBackground2); }
+    [data-theme="dark"] .fluent-textarea:focus { box-shadow: 0 0 0 2px rgba(71,158,245,0.2); }
+    .fluent-textarea:disabled { color: var(--colorNeutralForegroundDisabled); background: var(--colorNeutralBackground3); border-color: var(--colorNeutralStroke2); cursor: not-allowed; }
+
+    /* ═══ Label ═══ */
+    .fluent-label {
+      display: block; font-size: var(--fontSizeBase300); font-weight: var(--fontWeightMedium);
+      color: var(--colorNeutralForeground1); margin-bottom: var(--spacingXS);
+      line-height: var(--lineHeightBase300);
+    }
+    .fluent-label-required::after { content: ' *'; color: var(--colorStatusDangerForeground1); font-weight: var(--fontWeightSemibold); }
+    .fluent-label-disabled { color: var(--colorNeutralForegroundDisabled); }
+
+    /* ═══ Switch ═══ */
+    .fluent-switch { display: inline-flex; align-items: center; gap: var(--spacingS); cursor: pointer; }
+    .fluent-switch input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .fluent-switch-track {
+      position: relative; width: 40px; height: 20px; border-radius: var(--borderRadiusCircular);
+      background: var(--colorNeutralBackground1);
+      border: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
+      transition: background-color var(--durationNormal) var(--curveEasyEase),
+                  border-color var(--durationNormal) var(--curveEasyEase);
+    }
+    .fluent-switch-thumb {
+      position: absolute; top: 3px; left: 3px; width: 14px; height: 14px;
+      border-radius: var(--borderRadiusCircular); background: var(--colorNeutralForeground3);
+      transition: transform var(--durationNormal) var(--curveDecelerateMid),
+                  background-color var(--durationNormal) var(--curveEasyEase);
+    }
+    .fluent-switch input:checked + .fluent-switch-track {
+      background: var(--colorCompoundBrandBackground); border-color: var(--colorCompoundBrandBackground);
+    }
+    .fluent-switch input:checked + .fluent-switch-track .fluent-switch-thumb {
+      transform: translateX(20px); background: white;
+    }
+    .fluent-switch input:focus-visible + .fluent-switch-track {
+      border-color: var(--colorBrandForeground1); box-shadow: 0 0 0 2px rgba(15,108,189,0.15);
+    }
+    [data-theme="dark"] .fluent-switch input:focus-visible + .fluent-switch-track { box-shadow: 0 0 0 2px rgba(71,158,245,0.2); }
+    .fluent-switch input:disabled + .fluent-switch-track { opacity: 0.4; cursor: not-allowed; }
+    .fluent-switch input:disabled ~ .fluent-switch-label { color: var(--colorNeutralForegroundDisabled); }
+    .fluent-switch-label { font-size: var(--fontSizeBase300); color: var(--colorNeutralForeground1); user-select: none; }
+
+    /* ═══ Checkbox ═══ */
+    .fluent-checkbox { display: inline-flex; align-items: center; gap: var(--spacingS); cursor: pointer; }
+    .fluent-checkbox input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .fluent-checkbox-box {
+      width: 16px; height: 16px; border-radius: var(--borderRadiusSmall); flex-shrink: 0;
+      border: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
+      background: var(--colorNeutralBackground1); display: flex; align-items: center; justify-content: center;
+      transition: background-color var(--durationFast) var(--curveEasyEase),
+                  border-color var(--durationFast) var(--curveEasyEase);
+    }
+    .fluent-checkbox-box svg { opacity: 0; transition: opacity var(--durationFast) var(--curveEasyEase); }
+    .fluent-checkbox input:checked + .fluent-checkbox-box {
+      background: var(--colorCompoundBrandBackground); border-color: var(--colorCompoundBrandBackground);
+    }
+    .fluent-checkbox input:checked + .fluent-checkbox-box svg { opacity: 1; }
+    .fluent-checkbox input:focus-visible + .fluent-checkbox-box {
+      border-color: var(--colorBrandForeground1); box-shadow: 0 0 0 2px rgba(15,108,189,0.15);
+    }
+    [data-theme="dark"] .fluent-checkbox input:focus-visible + .fluent-checkbox-box { box-shadow: 0 0 0 2px rgba(71,158,245,0.2); }
+    .fluent-checkbox input:disabled + .fluent-checkbox-box { opacity: 0.4; cursor: not-allowed; }
+    .fluent-checkbox input:disabled ~ .fluent-checkbox-label { color: var(--colorNeutralForegroundDisabled); }
+    .fluent-checkbox-label { font-size: var(--fontSizeBase300); color: var(--colorNeutralForeground1); user-select: none; }
+
+    /* ═══ Radio ═══ */
+    .fluent-radio { display: inline-flex; align-items: center; gap: var(--spacingS); cursor: pointer; }
+    .fluent-radio input { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+    .fluent-radio-circle {
+      width: 16px; height: 16px; border-radius: var(--borderRadiusCircular); flex-shrink: 0;
+      border: var(--strokeWidthThin) solid var(--colorNeutralStrokeAccessible);
+      background: var(--colorNeutralBackground1); position: relative;
+      transition: border-color var(--durationFast) var(--curveEasyEase);
+    }
+    .fluent-radio-circle::after {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      width: 0; height: 0; border-radius: var(--borderRadiusCircular);
+      background: var(--colorCompoundBrandBackground);
+      transform: translate(-50%, -50%);
+      transition: width var(--durationFast) var(--curveDecelerateMid),
+                  height var(--durationFast) var(--curveDecelerateMid);
+    }
+    .fluent-radio input:checked + .fluent-radio-circle { border-color: var(--colorCompoundBrandBackground); }
+    .fluent-radio input:checked + .fluent-radio-circle::after { width: 6px; height: 6px; }
+    .fluent-radio input:focus-visible + .fluent-radio-circle {
+      border-color: var(--colorBrandForeground1); box-shadow: 0 0 0 2px rgba(15,108,189,0.15);
+    }
+    [data-theme="dark"] .fluent-radio input:focus-visible + .fluent-radio-circle { box-shadow: 0 0 0 2px rgba(71,158,245,0.2); }
+    .fluent-radio input:disabled + .fluent-radio-circle { opacity: 0.4; cursor: not-allowed; }
+    .fluent-radio input:disabled ~ .fluent-radio-label { color: var(--colorNeutralForegroundDisabled); }
+    .fluent-radio-label { font-size: var(--fontSizeBase300); color: var(--colorNeutralForeground1); user-select: none; }
+    .fluent-radio-group { display: flex; flex-direction: column; gap: var(--spacingS); }
+
+    /* ═══ Progress ═══ */
+    .fluent-progress { width: 100%; height: 2px; background: var(--colorNeutralBackground5); border-radius: var(--borderRadiusCircular); overflow: hidden; }
+    .fluent-progress-bar {
+      height: 100%; width: var(--progress, 0%); background: var(--colorCompoundBrandBackground);
+      border-radius: var(--borderRadiusCircular);
+      transition: width var(--durationSlow) var(--curveDecelerateMid);
+    }
+    .fluent-progress-lg { height: 4px; }
+
+    /* ═══ Avatar ═══ */
+    .fluent-avatar {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; border-radius: var(--borderRadiusCircular);
+      background: var(--colorBrandBackground); color: var(--colorNeutralForegroundOnBrand);
+      font-size: var(--fontSizeBase200); font-weight: var(--fontWeightSemibold);
+      overflow: hidden; flex-shrink: 0; user-select: none;
+    }
+    .fluent-avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .fluent-avatar-sm { width: 24px; height: 24px; font-size: var(--fontSizeBase100); }
+    .fluent-avatar-lg { width: 40px; height: 40px; font-size: var(--fontSizeBase300); }
+    .fluent-avatar-xl { width: 56px; height: 56px; font-size: var(--fontSizeBase400); }
+
+    /* ═══ Divider ═══ */
+    .fluent-divider { border: none; border-top: var(--strokeWidthThin) solid var(--colorNeutralStroke2); margin: var(--spacingL) 0; }
+    .fluent-divider-brand { border-top-color: var(--colorBrandStroke1); }
+    .fluent-divider-subtle { border-top-color: var(--colorNeutralStroke3); }
+    .fluent-divider-vertical { display: inline-block; border-top: none; border-left: var(--strokeWidthThin) solid var(--colorNeutralStroke2); height: 20px; margin: 0 var(--spacingM); vertical-align: middle; }
+
+    /* ═══ Tabs ═══ */
+    .fluent-tabs { display: flex; border-bottom: var(--strokeWidthThin) solid var(--colorNeutralStroke2); gap: 0; }
+    .fluent-tab {
+      padding: 10px 16px; font-size: var(--fontSizeBase300); font-weight: var(--fontWeightRegular);
+      color: var(--colorNeutralForeground2); background: none; border: none; cursor: pointer;
+      border-bottom: 2px solid transparent; margin-bottom: -1px;
+      transition: color var(--durationFaster) var(--curveEasyEase),
+                  border-color var(--durationFaster) var(--curveEasyEase);
+    }
+    .fluent-tab:hover { color: var(--colorNeutralForeground1); }
+    .fluent-tab[aria-selected="true"], .fluent-tab.active {
+      color: var(--colorNeutralForeground1); font-weight: var(--fontWeightSemibold);
+      border-bottom-color: var(--colorCompoundBrandBackground);
+    }
+    .fluent-tab-panel { padding: var(--spacingXXL) 0; }
+    .fluent-tab-panel[hidden] { display: none; }
+
+    /* ═══ Dialog ═══ */
+    .fluent-dialog { border: none; padding: 0; max-width: 600px; width: calc(100% - 48px); border-radius: var(--borderRadiusXLarge); background: var(--colorNeutralBackground1); box-shadow: var(--shadow64); color: var(--colorNeutralForeground1); }
+    .fluent-dialog::backdrop { background: rgba(0,0,0,0.4); }
+    .fluent-dialog-header { display: flex; align-items: center; justify-content: space-between; padding: var(--spacingXXL) var(--spacingXXL) 0; }
+    .fluent-dialog-title { font-size: var(--fontSizeBase500); font-weight: var(--fontWeightSemibold); color: var(--colorNeutralForeground1); }
+    .fluent-dialog-close {
+      width: 28px; height: 28px; border: none; background: var(--colorSubtleBackground); border-radius: var(--borderRadiusMedium);
+      color: var(--colorNeutralForeground2); cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background-color var(--durationFaster) var(--curveEasyEase);
+    }
+    .fluent-dialog-close:hover { background: var(--colorSubtleBackgroundHover); }
+    .fluent-dialog-body { padding: var(--spacingL) var(--spacingXXL); font-size: var(--fontSizeBase300); line-height: var(--lineHeightBase300); color: var(--colorNeutralForeground2); }
+    .fluent-dialog-footer { display: flex; justify-content: flex-end; gap: var(--spacingS); padding: 0 var(--spacingXXL) var(--spacingXXL); }
+
+    /* ═══ Menu ═══ */
+    .fluent-menu-wrapper { position: relative; display: inline-block; }
+    .fluent-menu {
+      position: absolute; top: 100%; left: 0; z-index: 100; min-width: 160px;
+      background: var(--colorNeutralBackground1); border: var(--strokeWidthThin) solid var(--colorNeutralStroke2);
+      border-radius: var(--borderRadiusLarge); box-shadow: var(--shadow16); padding: 4px;
+      opacity: 0; visibility: hidden; transform: translateY(4px);
+      transition: opacity var(--durationFast) var(--curveEasyEase),
+                  transform var(--durationFast) var(--curveEasyEase),
+                  visibility var(--durationFast) var(--curveEasyEase);
+    }
+    .fluent-menu.open { opacity: 1; visibility: visible; transform: translateY(0); }
+    .fluent-menu-item {
+      display: flex; align-items: center; gap: var(--spacingS); width: 100%;
+      padding: 6px 12px; font-size: var(--fontSizeBase300); color: var(--colorNeutralForeground2);
+      background: none; border: none; border-radius: var(--borderRadiusSmall);
+      cursor: pointer; text-align: left;
+      transition: background-color var(--durationFaster) var(--curveEasyEase),
+                  color var(--durationFaster) var(--curveEasyEase);
+    }
+    .fluent-menu-item:hover { background: var(--colorSubtleBackgroundHover); color: var(--colorNeutralForeground1); }
+    .fluent-menu-divider { border: none; border-top: var(--strokeWidthThin) solid var(--colorNeutralStroke2); margin: 4px 0; }
+
+    /* ═══ Disabled utility ═══ */
+    .fluent-btn:disabled, .fluent-btn.fluent-disabled {
+      color: var(--colorNeutralForegroundDisabled); background: var(--colorNeutralBackground3);
+      border-color: var(--colorNeutralStroke2); cursor: not-allowed; pointer-events: none;
+    }
+
+    /* ═══ Utility: Pulse (Skeleton Loading) ═══ */
+    @keyframes fluent-pulse {
+      0% { background-position: 200% 0; }
+      100% { background-position: -200% 0; }
+    }
+    .fluent-pulse {
+      background: linear-gradient(90deg, var(--colorNeutralBackground3) 25%, var(--colorNeutralBackground4) 50%, var(--colorNeutralBackground3) 75%);
+      background-size: 200% 100%; animation: fluent-pulse 1.5s var(--curveEasyEase) infinite;
+      border-radius: var(--borderRadiusMedium);
+    }
+
+    /* ═══ Utility: Accent Stripe ═══ */
+    .fluent-accent-stripe { border-left: 2px solid var(--colorBrandBackground); padding-left: var(--spacingL); }
+
+    /* ═══ Skip Link ═══ */
+    .skip-link {
+      position: absolute; left: -9999px; top: auto; width: 1px; height: 1px; overflow: hidden;
+      z-index: 10000; padding: 8px 16px; background: var(--colorBrandBackground); color: var(--colorNeutralForegroundOnBrand);
+      font-size: var(--fontSizeBase300); font-weight: var(--fontWeightSemibold);
+      border-radius: var(--borderRadiusMedium); text-decoration: none;
+    }
+    .skip-link:focus { position: fixed; left: var(--spacingL); top: var(--spacingL); width: auto; height: auto; }
 
     /* ═══ Acrylic Demo ═══ */
     .acrylic-demo {
@@ -643,6 +896,7 @@
       .hero-meta { gap: var(--spacingXXL); }
       .elevation-grid { grid-template-columns: 1fr; }
       .spacing-row { flex-direction: column; align-items: flex-start; gap: var(--spacingS); }
+      .form-grid { grid-template-columns: 1fr !important; }
     }
     @media (max-width: 480px) {
       .container { padding: 0 var(--spacingL); }
@@ -655,6 +909,15 @@
         transition-duration: 0.01ms !important;
       }
       .reveal { opacity: 1; transform: none; }
+    }
+
+    @media print {
+      body { background: white !important; color: black !important; }
+      .navbar, .site-footer, .theme-toggle, .skip-link { display: none !important; }
+      .fluent-card { box-shadow: none !important; border: 1px solid #ccc !important; }
+      .reveal { opacity: 1 !important; transform: none !important; }
+      .section { padding: 24px 0 !important; }
+      .hero { padding: 32px 0 !important; }
     }
   </style>
 </head>
@@ -680,6 +943,7 @@
         <li><a href="#shadows">Shadows</a></li>
         <li><a href="#spacing">Spacing</a></li>
         <li><a href="#components">Components</a></li>
+        <li><a href="#forms">Forms</a></li>
         <li><a href="#elevation">Elevation</a></li>
         <li><a href="#materials">Materials</a></li>
         <li><a href="#motion">Motion</a></li>
@@ -997,8 +1261,277 @@
       </div>
     </section>
 
+    <!-- ═══ FORM CONTROLS ═══ -->
+    <section class="section reveal" id="forms">
+      <div class="container">
+        <p class="section-overline">Form Controls</p>
+        <h2 class="section-title">Inputs & selections</h2>
+        <p class="section-description">Form primitives built on Fluent 2 input patterns. Every control shares the same focus ring, disabled state, and theme adaptation.</p>
+
+        <div class="form-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:48px;">
+          <!-- Column 1: Text inputs -->
+          <div>
+            <div class="component-row">
+              <div class="component-label">Label + Input</div>
+              <div>
+                <label class="fluent-label fluent-label-required">Workflow name</label>
+                <input class="fluent-input" type="text" placeholder="Enter workflow name..." style="width:100%;">
+              </div>
+            </div>
+
+            <div class="component-row">
+              <div class="component-label">Select</div>
+              <div>
+                <label class="fluent-label">Environment</label>
+                <select class="fluent-select" style="width:100%;">
+                  <option>Production</option>
+                  <option>Staging</option>
+                  <option>Development</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="component-row">
+              <div class="component-label">Textarea</div>
+              <div>
+                <label class="fluent-label">Description</label>
+                <textarea class="fluent-textarea" placeholder="Describe the workflow..." style="width:100%;" rows="3"></textarea>
+              </div>
+            </div>
+
+            <div class="component-row">
+              <div class="component-label">Disabled states</div>
+              <div style="display:flex;flex-direction:column;gap:var(--spacingS);">
+                <input class="fluent-input" type="text" value="Disabled input" disabled style="width:100%;">
+                <select class="fluent-select" disabled style="width:100%;"><option>Disabled select</option></select>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2: Toggle controls -->
+          <div>
+            <div class="component-row">
+              <div class="component-label">Switch</div>
+              <div style="display:flex;flex-direction:column;gap:var(--spacingM);">
+                <label class="fluent-switch">
+                  <input type="checkbox" checked>
+                  <span class="fluent-switch-track"><span class="fluent-switch-thumb"></span></span>
+                  <span class="fluent-switch-label">Auto-deploy on push</span>
+                </label>
+                <label class="fluent-switch">
+                  <input type="checkbox">
+                  <span class="fluent-switch-track"><span class="fluent-switch-thumb"></span></span>
+                  <span class="fluent-switch-label">Email notifications</span>
+                </label>
+                <label class="fluent-switch">
+                  <input type="checkbox" disabled>
+                  <span class="fluent-switch-track"><span class="fluent-switch-thumb"></span></span>
+                  <span class="fluent-switch-label" style="color:var(--colorNeutralForegroundDisabled);">Disabled switch</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="component-row">
+              <div class="component-label">Checkboxes</div>
+              <div style="display:flex;flex-direction:column;gap:var(--spacingS);">
+                <label class="fluent-checkbox">
+                  <input type="checkbox" checked>
+                  <span class="fluent-checkbox-box"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5L4.5 7.5L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  <span class="fluent-checkbox-label">Run tests before deploy</span>
+                </label>
+                <label class="fluent-checkbox">
+                  <input type="checkbox">
+                  <span class="fluent-checkbox-box"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5L4.5 7.5L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  <span class="fluent-checkbox-label">Enable caching</span>
+                </label>
+                <label class="fluent-checkbox">
+                  <input type="checkbox" checked>
+                  <span class="fluent-checkbox-box"><svg width="10" height="10" viewBox="0 0 10 10" fill="none"><path d="M2 5L4.5 7.5L8 3" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                  <span class="fluent-checkbox-label">Generate source maps</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="component-row">
+              <div class="component-label">Radio group</div>
+              <div class="fluent-radio-group">
+                <label class="fluent-radio">
+                  <input type="radio" name="deploy-target" checked>
+                  <span class="fluent-radio-circle"></span>
+                  <span class="fluent-radio-label">US East</span>
+                </label>
+                <label class="fluent-radio">
+                  <input type="radio" name="deploy-target">
+                  <span class="fluent-radio-circle"></span>
+                  <span class="fluent-radio-label">EU West</span>
+                </label>
+                <label class="fluent-radio">
+                  <input type="radio" name="deploy-target">
+                  <span class="fluent-radio-circle"></span>
+                  <span class="fluent-radio-label">Asia Pacific</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ FEEDBACK & DISPLAY ═══ -->
+    <section class="section section-alt reveal" id="feedback">
+      <div class="container">
+        <p class="section-overline">Feedback & Display</p>
+        <h2 class="section-title">Progress, avatars & dividers</h2>
+        <p class="section-description">Visual feedback components and layout helpers. Progress tracks completion, avatars represent people, dividers separate content.</p>
+
+        <div class="component-row">
+          <div class="component-label">Progress</div>
+          <div style="display:flex;flex-direction:column;gap:var(--spacingXXL);max-width:480px;">
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:var(--spacingS);font-size:var(--fontSizeBase200);color:var(--colorNeutralForeground3);">
+                <span>Build progress</span><span>25%</span>
+              </div>
+              <div class="fluent-progress" style="--progress:25%;"><div class="fluent-progress-bar"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:var(--spacingS);font-size:var(--fontSizeBase200);color:var(--colorNeutralForeground3);">
+                <span>Tests passing</span><span>68%</span>
+              </div>
+              <div class="fluent-progress fluent-progress-lg" style="--progress:68%;"><div class="fluent-progress-bar"></div></div>
+            </div>
+            <div>
+              <div style="display:flex;justify-content:space-between;margin-bottom:var(--spacingS);font-size:var(--fontSizeBase200);color:var(--colorNeutralForeground3);">
+                <span>Deploy complete</span><span>100%</span>
+              </div>
+              <div class="fluent-progress fluent-progress-lg" style="--progress:100%;"><div class="fluent-progress-bar"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="component-row">
+          <div class="component-label">Avatars — Sizes</div>
+          <div class="component-demo">
+            <span class="fluent-avatar fluent-avatar-sm">S</span>
+            <span class="fluent-avatar">AB</span>
+            <span class="fluent-avatar fluent-avatar-lg">CD</span>
+            <span class="fluent-avatar fluent-avatar-xl">EF</span>
+          </div>
+        </div>
+
+        <div class="component-row">
+          <div class="component-label">Dividers</div>
+          <div style="max-width:480px;">
+            <div style="font-size:var(--fontSizeBase200);color:var(--colorNeutralForeground3);margin-bottom:var(--spacingS);">Default</div>
+            <hr class="fluent-divider">
+            <div style="font-size:var(--fontSizeBase200);color:var(--colorNeutralForeground3);margin-bottom:var(--spacingS);">Brand</div>
+            <hr class="fluent-divider fluent-divider-brand">
+            <div style="font-size:var(--fontSizeBase200);color:var(--colorNeutralForeground3);margin-bottom:var(--spacingS);">Subtle</div>
+            <hr class="fluent-divider fluent-divider-subtle">
+            <div style="font-size:var(--fontSizeBase200);color:var(--colorNeutralForeground3);margin-top:var(--spacingL);">Vertical: Item A<span class="fluent-divider-vertical"></span>Item B<span class="fluent-divider-vertical"></span>Item C</div>
+          </div>
+        </div>
+
+        <div class="component-row">
+          <div class="component-label">Skeleton Loading</div>
+          <div class="fluent-card" style="max-width:320px;">
+            <div class="fluent-pulse" style="width:40px;height:40px;border-radius:var(--borderRadiusCircular);margin-bottom:var(--spacingM);"></div>
+            <div class="fluent-pulse" style="height:14px;width:60%;margin-bottom:var(--spacingS);"></div>
+            <div class="fluent-pulse" style="height:14px;width:90%;margin-bottom:var(--spacingS);"></div>
+            <div class="fluent-pulse" style="height:14px;width:45%;"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══ NAVIGATION: TABS ═══ -->
+    <section class="section reveal" id="navigation-patterns">
+      <div class="container">
+        <p class="section-overline">Navigation</p>
+        <h2 class="section-title">Tabs & menus</h2>
+        <p class="section-description">Compound navigation components for organizing content and actions. Built with ARIA roles for accessibility.</p>
+
+        <div class="component-row">
+          <div class="component-label">Tabs</div>
+          <div style="max-width:600px;">
+            <div class="fluent-tabs" role="tablist" id="demoTabs">
+              <button class="fluent-tab active" role="tab" aria-selected="true" data-tab="overview">Overview</button>
+              <button class="fluent-tab" role="tab" aria-selected="false" data-tab="analytics">Analytics</button>
+              <button class="fluent-tab" role="tab" aria-selected="false" data-tab="settings">Settings</button>
+            </div>
+            <div class="fluent-tab-panel" id="tab-overview" role="tabpanel">
+              <div class="fluent-card">
+                <div style="font-size:var(--fontSizeBase400);font-weight:var(--fontWeightSemibold);margin-bottom:var(--spacingS);">Workflow Overview</div>
+                <div style="font-size:var(--fontSizeBase300);color:var(--colorNeutralForeground2);">Your workflow is running smoothly. 1,284 active instances across 3 regions with 99.97% uptime.</div>
+              </div>
+            </div>
+            <div class="fluent-tab-panel" id="tab-analytics" role="tabpanel" hidden>
+              <div class="fluent-card">
+                <div style="font-size:var(--fontSizeBase400);font-weight:var(--fontWeightSemibold);margin-bottom:var(--spacingS);">Performance Analytics</div>
+                <div style="font-size:var(--fontSizeBase300);color:var(--colorNeutralForeground2);">Avg response time: 94ms. Peak throughput: 12,400 req/s. Error rate: 0.03%.</div>
+              </div>
+            </div>
+            <div class="fluent-tab-panel" id="tab-settings" role="tabpanel" hidden>
+              <div class="fluent-card">
+                <div style="font-size:var(--fontSizeBase400);font-weight:var(--fontWeightSemibold);margin-bottom:var(--spacingS);">Settings</div>
+                <div style="font-size:var(--fontSizeBase300);color:var(--colorNeutralForeground2);">Configure auto-scaling, retry policies, and notification preferences for this workflow.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="component-row">
+          <div class="component-label">Dialog</div>
+          <div class="component-demo">
+            <button class="fluent-btn fluent-btn-primary" id="openDialogBtn">Open Dialog</button>
+          </div>
+          <dialog class="fluent-dialog" id="demoDialog">
+            <div class="fluent-dialog-header">
+              <span class="fluent-dialog-title">Confirm deployment</span>
+              <button class="fluent-dialog-close" id="closeDialogBtn" aria-label="Close">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="4" y1="4" x2="12" y2="12"/><line x1="12" y1="4" x2="4" y2="12"/></svg>
+              </button>
+            </div>
+            <div class="fluent-dialog-body">
+              <p>You are about to deploy <strong>workflow-v2.4.1</strong> to <strong>production (US East)</strong>. This will affect 1,284 active workflow instances.</p>
+              <p style="margin-top:var(--spacingM);">This action cannot be undone. Are you sure you want to continue?</p>
+            </div>
+            <div class="fluent-dialog-footer">
+              <button class="fluent-btn fluent-btn-outline" id="cancelDialogBtn">Cancel</button>
+              <button class="fluent-btn fluent-btn-primary" id="confirmDialogBtn">Deploy now</button>
+            </div>
+          </dialog>
+        </div>
+
+        <div class="component-row">
+          <div class="component-label">Menu</div>
+          <div class="component-demo">
+            <div class="fluent-menu-wrapper" id="demoMenuWrapper">
+              <button class="fluent-btn fluent-btn-outline" id="openMenuBtn" aria-haspopup="true" aria-expanded="false">
+                Actions ▾
+              </button>
+              <div class="fluent-menu" role="menu" id="demoMenu">
+                <button class="fluent-menu-item" role="menuitem">Edit workflow</button>
+                <button class="fluent-menu-item" role="menuitem">Duplicate</button>
+                <button class="fluent-menu-item" role="menuitem">Export as JSON</button>
+                <hr class="fluent-menu-divider">
+                <button class="fluent-menu-item" role="menuitem" style="color:var(--colorStatusDangerForeground1);">Delete workflow</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="component-row">
+          <div class="component-label">Accent Stripe</div>
+          <div class="fluent-accent-stripe" style="max-width:480px;">
+            <div style="font-size:var(--fontSizeBase300);font-weight:var(--fontWeightSemibold);color:var(--colorNeutralForeground1);margin-bottom:var(--spacingXS);">Note</div>
+            <div style="font-size:var(--fontSizeBase300);color:var(--colorNeutralForeground2);">The accent stripe utility adds a branded left border to any block element, ideal for callouts and important notices.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <!-- ═══ ELEVATION CARDS ═══ -->
-    <section class="section reveal" id="elevation">
+    <section class="section section-alt reveal" id="elevation">
       <div class="container">
         <p class="section-overline">Depth</p>
         <h2 class="section-title">Elevation in practice</h2>
@@ -1344,6 +1877,52 @@
       requestAnimationFrame(renderSwatches);
     });
     themeObserver.observe(html, { attributes: true, attributeFilter: ['data-theme'] });
+
+    /* ═══ Tabs ═══ */
+    document.querySelectorAll('.fluent-tabs').forEach(tabList => {
+      const tabs = tabList.querySelectorAll('.fluent-tab');
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
+          const target = tab.getAttribute('data-tab');
+          tabList.parentElement.querySelectorAll('.fluent-tab-panel').forEach(p => { p.hidden = true; });
+          const panel = document.getElementById('tab-' + target);
+          if (panel) panel.hidden = false;
+        });
+      });
+    });
+
+    /* ═══ Dialog ═══ */
+    const dialog = document.getElementById('demoDialog');
+    const openDialogBtn = document.getElementById('openDialogBtn');
+    const closeDialogBtn = document.getElementById('closeDialogBtn');
+    const cancelDialogBtn = document.getElementById('cancelDialogBtn');
+    const confirmDialogBtn = document.getElementById('confirmDialogBtn');
+    if (dialog && openDialogBtn) {
+      openDialogBtn.addEventListener('click', () => dialog.showModal());
+      closeDialogBtn.addEventListener('click', () => dialog.close());
+      cancelDialogBtn.addEventListener('click', () => dialog.close());
+      confirmDialogBtn.addEventListener('click', () => dialog.close());
+      dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+    }
+
+    /* ═══ Menu ═══ */
+    const menuBtn = document.getElementById('openMenuBtn');
+    const menu = document.getElementById('demoMenu');
+    if (menuBtn && menu) {
+      menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isOpen = menu.classList.contains('open');
+        menu.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', !isOpen);
+      });
+      menu.querySelectorAll('.fluent-menu-item').forEach(item => {
+        item.addEventListener('click', () => { menu.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); });
+      });
+      document.addEventListener('click', () => { menu.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); });
+    }
   </script>
 
 </body>
